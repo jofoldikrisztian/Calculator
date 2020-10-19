@@ -73,9 +73,39 @@ namespace MathCalc.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap floppy_orange {
+            get {
+                object obj = ResourceManager.GetObject("floppy_orange", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap floppy_white {
+            get {
+                object obj = ResourceManager.GetObject("floppy_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap honeycomb {
             get {
                 object obj = ResourceManager.GetObject("honeycomb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap quadratic {
+            get {
+                object obj = ResourceManager.GetObject("quadratic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

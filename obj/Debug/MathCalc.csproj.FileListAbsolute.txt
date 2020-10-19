@@ -8,3 +8,4 @@ D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejleszté
 D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Debug\MathCalc.csproj.CoreCompileInputs.cache
 D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Debug\MathCalc.exe
 D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Debug\MathCalc.pdb
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Debug\MathCalc.CustomImageButton.resources

@@ -34,7 +34,6 @@ namespace MathCalc
 
         }
 
-
         #region
 
         protected override void OnMouseEnter(EventArgs e)

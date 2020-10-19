@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomImageButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomImageButton.Designer.cs">
+      <DependentUpon>CustomImageButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="MathCalcButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -57,6 +63,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CustomImageButton.resx">
+      <DependentUpon>CustomImageButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MathCalcForm.resx">
       <DependentUpon>MathCalcForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +97,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\brain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quadratic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floppy_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floppy_white.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
