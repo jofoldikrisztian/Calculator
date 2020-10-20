@@ -14,7 +14,7 @@ namespace MathCalc
 
     public partial class MathCalcFrm : Form
     {
-        private const int WM_NCLBUTTONDOWN = 0xA1;
+        private const int buttondown = 0xA1;
         private const int HT_CAPTION = 0x2;
 
 
@@ -44,7 +44,7 @@ namespace MathCalc
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                SendMessage(Handle, buttondown, HT_CAPTION, 0);
             }
         }
 
@@ -61,7 +61,7 @@ namespace MathCalc
                 return;
             }
 
-            ListViewItem item = new ListViewItem(new string[] { txtBxA.Text, txtBxB.Text, txtBxC.Text });
+            ListViewItem item = new ListViewItem(new string[] {"", txtBxA.Text + "x²+" + txtBxB.Text + "x+" + txtBxC.Text, txtBxA.Text, txtBxB.Text, txtBxC.Text });
 
             listView1.Items.Add(item);
             txtBxA.Clear();
@@ -99,6 +99,24 @@ namespace MathCalc
             {
                 MessageBox.Show("Nem jelöltél ki egy elemet sem!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }  
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+          
+
+            ListViewItem item = listView1.SelectedItems[0];
+
+            var aValue = item.SubItems[clmnHAEgyutthato.Index].Text;
+            var bValue = item.SubItems[clmnHBEgyutthato.Index].Text;
+            var cValue = item.SubItems[clmnHCEgyutthato.Index].Text;
+
+            MessageBox.Show(aValue.ToString() + bValue.ToString() + cValue.ToString(), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

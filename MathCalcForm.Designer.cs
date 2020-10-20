@@ -31,27 +31,30 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MathCalcFrm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblMentes = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.grpBxUjEgyenlet = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtBxC = new System.Windows.Forms.TextBox();
-            this.txtBxB = new System.Windows.Forms.TextBox();
             this.txtBxA = new System.Windows.Forms.TextBox();
+            this.txtBxB = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.grpBxEgyenletek = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmnHKeplet = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmnHAEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmnHBEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmnHCEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label3 = new System.Windows.Forms.Label();
-            this.lblMentes = new System.Windows.Forms.Label();
             this.btnRogzit = new MathCalc.MathCalcButton();
             this.mthClcBtnTorles = new MathCalc.MathCalcButton();
             this.cstmImgBtnMentes = new MathCalc.CustomImageButton();
@@ -61,6 +64,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.grpBxUjEgyenlet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.grpBxEgyenletek.SuspendLayout();
@@ -84,6 +88,17 @@
             this.panel1.Size = new System.Drawing.Size(1000, 124);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // lblMentes
+            // 
+            this.lblMentes.AutoSize = true;
+            this.lblMentes.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblMentes.ForeColor = System.Drawing.Color.White;
+            this.lblMentes.Location = new System.Drawing.Point(490, 94);
+            this.lblMentes.Name = "lblMentes";
+            this.lblMentes.Size = new System.Drawing.Size(64, 20);
+            this.lblMentes.TabIndex = 4;
+            this.lblMentes.Text = "Mentés";
             // 
             // label2
             // 
@@ -139,27 +154,36 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.richTextBox1);
             this.groupBox2.Location = new System.Drawing.Point(34, 294);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(520, 239);
+            this.groupBox2.Size = new System.Drawing.Size(617, 239);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Egyenlet megoldása";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(160, 98);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(100, 28);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
             // 
             // grpBxUjEgyenlet
             // 
             this.grpBxUjEgyenlet.BackColor = System.Drawing.Color.Transparent;
             this.grpBxUjEgyenlet.Controls.Add(this.pictureBox2);
             this.grpBxUjEgyenlet.Controls.Add(this.txtBxC);
-            this.grpBxUjEgyenlet.Controls.Add(this.txtBxB);
             this.grpBxUjEgyenlet.Controls.Add(this.txtBxA);
+            this.grpBxUjEgyenlet.Controls.Add(this.txtBxB);
             this.grpBxUjEgyenlet.Controls.Add(this.label6);
             this.grpBxUjEgyenlet.Controls.Add(this.label5);
             this.grpBxUjEgyenlet.Controls.Add(this.label4);
             this.grpBxUjEgyenlet.Controls.Add(this.btnRogzit);
             this.grpBxUjEgyenlet.Location = new System.Drawing.Point(34, 39);
             this.grpBxUjEgyenlet.Name = "grpBxUjEgyenlet";
-            this.grpBxUjEgyenlet.Size = new System.Drawing.Size(520, 239);
+            this.grpBxUjEgyenlet.Size = new System.Drawing.Size(617, 239);
             this.grpBxUjEgyenlet.TabIndex = 3;
             this.grpBxUjEgyenlet.TabStop = false;
             this.grpBxUjEgyenlet.Text = "Új egyenlet rögzítése";
@@ -167,7 +191,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(282, 54);
+            this.pictureBox2.Location = new System.Drawing.Point(387, 59);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(189, 72);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -178,22 +202,22 @@
             // 
             this.txtBxC.Location = new System.Drawing.Point(75, 146);
             this.txtBxC.Name = "txtBxC";
-            this.txtBxC.Size = new System.Drawing.Size(163, 27);
+            this.txtBxC.Size = new System.Drawing.Size(214, 27);
             this.txtBxC.TabIndex = 2;
+            // 
+            // txtBxA
+            // 
+            this.txtBxA.Location = new System.Drawing.Point(74, 63);
+            this.txtBxA.Name = "txtBxA";
+            this.txtBxA.Size = new System.Drawing.Size(215, 27);
+            this.txtBxA.TabIndex = 2;
             // 
             // txtBxB
             // 
             this.txtBxB.Location = new System.Drawing.Point(75, 104);
             this.txtBxB.Name = "txtBxB";
-            this.txtBxB.Size = new System.Drawing.Size(163, 27);
+            this.txtBxB.Size = new System.Drawing.Size(214, 27);
             this.txtBxB.TabIndex = 2;
-            // 
-            // txtBxA
-            // 
-            this.txtBxA.Location = new System.Drawing.Point(75, 61);
-            this.txtBxA.Name = "txtBxA";
-            this.txtBxA.Size = new System.Drawing.Size(163, 27);
-            this.txtBxA.TabIndex = 2;
             // 
             // label6
             // 
@@ -232,9 +256,9 @@
             this.grpBxEgyenletek.BackColor = System.Drawing.Color.Transparent;
             this.grpBxEgyenletek.Controls.Add(this.listView1);
             this.grpBxEgyenletek.Controls.Add(this.mthClcBtnTorles);
-            this.grpBxEgyenletek.Location = new System.Drawing.Point(571, 39);
+            this.grpBxEgyenletek.Location = new System.Drawing.Point(678, 39);
             this.grpBxEgyenletek.Name = "grpBxEgyenletek";
-            this.grpBxEgyenletek.Size = new System.Drawing.Size(382, 541);
+            this.grpBxEgyenletek.Size = new System.Drawing.Size(264, 541);
             this.grpBxEgyenletek.TabIndex = 2;
             this.grpBxEgyenletek.TabStop = false;
             this.grpBxEgyenletek.Text = "Egyenletek";
@@ -244,6 +268,8 @@
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.clmnHKeplet,
             this.clmnHAEgyutthato,
             this.clmnHBEgyutthato,
             this.clmnHCEgyutthato});
@@ -252,27 +278,41 @@
             this.listView1.GridLines = true;
             this.listView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(6, 26);
+            this.listView1.Location = new System.Drawing.Point(20, 26);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(370, 441);
+            this.listView1.Size = new System.Drawing.Size(224, 441);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ColumnHead34er";
+            this.columnHeader1.Width = 0;
+            // 
+            // clmnHKeplet
+            // 
+            this.clmnHKeplet.Text = "Képlet";
+            this.clmnHKeplet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.clmnHKeplet.Width = 220;
             // 
             // clmnHAEgyutthato
             // 
+            this.clmnHAEgyutthato.Tag = "";
             this.clmnHAEgyutthato.Text = "\"a\" együttható";
-            this.clmnHAEgyutthato.Width = 120;
+            this.clmnHAEgyutthato.Width = 0;
             // 
             // clmnHBEgyutthato
             // 
             this.clmnHBEgyutthato.Text = "\"b\" együttható";
-            this.clmnHBEgyutthato.Width = 120;
+            this.clmnHBEgyutthato.Width = 0;
             // 
             // clmnHCEgyutthato
             // 
             this.clmnHCEgyutthato.Text = "\"c\" együttható";
-            this.clmnHCEgyutthato.Width = 120;
+            this.clmnHCEgyutthato.Width = 0;
             // 
             // label3
             // 
@@ -284,21 +324,10 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "© 2020 - Jóföldi Krisztián";
             // 
-            // lblMentes
-            // 
-            this.lblMentes.AutoSize = true;
-            this.lblMentes.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblMentes.ForeColor = System.Drawing.Color.White;
-            this.lblMentes.Location = new System.Drawing.Point(490, 94);
-            this.lblMentes.Name = "lblMentes";
-            this.lblMentes.Size = new System.Drawing.Size(64, 20);
-            this.lblMentes.TabIndex = 4;
-            this.lblMentes.Text = "Mentés";
-            // 
             // btnRogzit
             // 
             this.btnRogzit.ForeColor = System.Drawing.Color.White;
-            this.btnRogzit.Location = new System.Drawing.Point(309, 168);
+            this.btnRogzit.Location = new System.Drawing.Point(416, 165);
             this.btnRogzit.Name = "btnRogzit";
             this.btnRogzit.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
             this.btnRogzit.Size = new System.Drawing.Size(118, 36);
@@ -311,10 +340,10 @@
             this.mthClcBtnTorles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.mthClcBtnTorles.ForeColor = System.Drawing.Color.White;
-            this.mthClcBtnTorles.Location = new System.Drawing.Point(108, 488);
+            this.mthClcBtnTorles.Location = new System.Drawing.Point(44, 484);
             this.mthClcBtnTorles.Name = "mthClcBtnTorles";
             this.mthClcBtnTorles.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.mthClcBtnTorles.Size = new System.Drawing.Size(192, 36);
+            this.mthClcBtnTorles.Size = new System.Drawing.Size(179, 36);
             this.mthClcBtnTorles.TabIndex = 0;
             this.mthClcBtnTorles.Text = "🗑 Kijelölt(ek) törlése";
             this.mthClcBtnTorles.Click += new System.EventHandler(this.mthClcBtnTorles_Click);
@@ -389,6 +418,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.grpBxUjEgyenlet.ResumeLayout(false);
             this.grpBxUjEgyenlet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -417,7 +447,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtBxC;
         private System.Windows.Forms.TextBox txtBxB;
-        private System.Windows.Forms.TextBox txtBxA;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -428,6 +457,10 @@
         private System.Windows.Forms.ColumnHeader clmnHCEgyutthato;
         private System.Windows.Forms.Label lblMentes;
         private CustomImageButton cstmImgBtnMentes;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TextBox txtBxA;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader clmnHKeplet;
     }
 }
 

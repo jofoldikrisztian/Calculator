@@ -20,6 +20,7 @@ namespace MathCalc
         private Image NormalImage;
         private Image enterImage;
 
+
         public Image ImageNormal
         {
             get { return NormalImage; }
@@ -33,6 +34,9 @@ namespace MathCalc
         }
 
 
+
+
+
         private void CustomImageButton_MouseLeave(object sender, EventArgs e)
         {
             this.Image = NormalImage;
@@ -42,5 +46,6 @@ namespace MathCalc
         {
             this.Image = enterImage;
         }
+
     }
 }
