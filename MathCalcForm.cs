@@ -7,20 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace MathCalc
 {
-
-
     public partial class MathCalcFrm : Form
     {
         private const int buttondown = 0xA1;
         private const int HT_CAPTION = 0x2;
-
+        private readonly QuadraticEquation _quadraticEquation;
 
         public MathCalcFrm()
         {
             InitializeComponent();
+            _quadraticEquation = new QuadraticEquation();
 
         }
 
@@ -35,10 +35,12 @@ namespace MathCalc
         }
 
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+
+        [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -53,17 +55,40 @@ namespace MathCalc
             WindowState = FormWindowState.Minimized;
         }
 
-
         private void btnRogzit_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtBxA.Text) || string.IsNullOrEmpty(txtBxB.Text) || string.IsNullOrEmpty(txtBxC.Text))
             {
-                return;
+                MessageBox.Show("Hiányzó adat!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (int.TryParse(txtBxA.Text, out _) && int.TryParse(txtBxB.Text, out _) && int.TryParse(txtBxC.Text, out _))
+            {
+                string equation = txtBxA.Text + "x² + " + txtBxB.Text + "x + " + txtBxC.Text;
+                ListViewItem newItem = new ListViewItem(new string[] { "", equation, txtBxA.Text, txtBxB.Text, txtBxC.Text });
+                newItem.Name = equation;
+
+                if (!listView1.Items.ContainsKey(newItem.Name))
+                {
+                    listView1.Items.Add(newItem);
+                    clearTextBoxes();
+                }
+                else
+                {
+                    MessageBox.Show("A táblázat már tartalmazza ezt az egyenletet!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearTextBoxes();
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Hibás paraméter!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clearTextBoxes();
             }
 
-            ListViewItem item = new ListViewItem(new string[] {"", txtBxA.Text + "x²+" + txtBxB.Text + "x+" + txtBxC.Text, txtBxA.Text, txtBxB.Text, txtBxC.Text });
+        }
 
-            listView1.Items.Add(item);
+        private void clearTextBoxes()
+        {
             txtBxA.Clear();
             txtBxB.Clear();
             txtBxC.Clear();
@@ -104,19 +129,18 @@ namespace MathCalc
         private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
           
-
             ListViewItem item = listView1.SelectedItems[0];
 
-            var aValue = item.SubItems[clmnHAEgyutthato.Index].Text;
-            var bValue = item.SubItems[clmnHBEgyutthato.Index].Text;
-            var cValue = item.SubItems[clmnHCEgyutthato.Index].Text;
+            var aValue = float.Parse(item.SubItems[clmnHAEgyutthato.Index].Text);
+            var bValue = float.Parse(item.SubItems[clmnHBEgyutthato.Index].Text);
+            var cValue = float.Parse(item.SubItems[clmnHCEgyutthato.Index].Text);
 
-            MessageBox.Show(aValue.ToString() + bValue.ToString() + cValue.ToString(), "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            QuadraticResult result = _quadraticEquation.GetResult(aValue, bValue, cValue);
+
+            lblBxEgyenlet.Text = item.SubItems[clmnHEgyenlet.Index].Text;
+            lblBxX1.Text = result.FirstValue;
+            lblBxX2.Text = result.SecondValue;
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
