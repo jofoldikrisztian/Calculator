@@ -32,13 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MathCalcFrm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMentes = new System.Windows.Forms.Label();
-            this.cstmImgBtnMentes = new MathCalc.CustomImageButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.mathCalcButton4 = new MathCalc.MathCalcButton();
-            this.mathCalcButton6 = new MathCalc.MathCalcButton();
-            this.btnClose = new MathCalc.MathCalcButton();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -56,24 +52,29 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnRogzit = new MathCalc.MathCalcButton();
             this.grpBxEgyenletek = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmnHId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmnHEgyenlet = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmnHAEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmnHBEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmnHCEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.mthClcBtnTorles = new MathCalc.MathCalcButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnRogzit = new MathCalc.MathCalcButton();
+            this.mthClcBtnTorles = new MathCalc.MathCalcButton();
+            this.cstmImgBtnMentes = new MathCalc.CustomImageButton();
+            this.mathCalcButton4 = new MathCalc.MathCalcButton();
+            this.mathCalcButton6 = new MathCalc.MathCalcButton();
+            this.btnClose = new MathCalc.MathCalcButton();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cstmImgBtnMentes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grpBxUjEgyenlet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.grpBxEgyenletek.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cstmImgBtnMentes)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -104,20 +105,6 @@
             this.lblMentes.Size = new System.Drawing.Size(64, 20);
             this.lblMentes.TabIndex = 4;
             this.lblMentes.Text = "Mentés";
-            // 
-            // cstmImgBtnMentes
-            // 
-            this.cstmImgBtnMentes.Image = global::MathCalc.Properties.Resources.floppy_white;
-            this.cstmImgBtnMentes.ImageEnter = global::MathCalc.Properties.Resources.floppy_orange;
-            this.cstmImgBtnMentes.ImageNormal = global::MathCalc.Properties.Resources.floppy_white;
-            this.cstmImgBtnMentes.Location = new System.Drawing.Point(490, 35);
-            this.cstmImgBtnMentes.Name = "cstmImgBtnMentes";
-            this.cstmImgBtnMentes.Size = new System.Drawing.Size(64, 56);
-            this.cstmImgBtnMentes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.cstmImgBtnMentes.TabIndex = 3;
-            this.cstmImgBtnMentes.TabStop = false;
-            this.cstmImgBtnMentes.MouseEnter += new System.EventHandler(this.cstmImgBtnMentes_MouseEnter);
-            this.cstmImgBtnMentes.MouseLeave += new System.EventHandler(this.cstmImgBtnMentes_MouseLeave);
             // 
             // label2
             // 
@@ -150,45 +137,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // mathCalcButton4
-            // 
-            this.mathCalcButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mathCalcButton4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mathCalcButton4.ForeColor = System.Drawing.Color.White;
-            this.mathCalcButton4.Location = new System.Drawing.Point(893, 12);
-            this.mathCalcButton4.Name = "mathCalcButton4";
-            this.mathCalcButton4.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.mathCalcButton4.Size = new System.Drawing.Size(29, 23);
-            this.mathCalcButton4.TabIndex = 0;
-            this.mathCalcButton4.Text = "?";
-            this.mathCalcButton4.Click += new System.EventHandler(this.mathCalcButton4_Click);
-            // 
-            // mathCalcButton6
-            // 
-            this.mathCalcButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mathCalcButton6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mathCalcButton6.ForeColor = System.Drawing.Color.White;
-            this.mathCalcButton6.Location = new System.Drawing.Point(924, 12);
-            this.mathCalcButton6.Name = "mathCalcButton6";
-            this.mathCalcButton6.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.mathCalcButton6.Size = new System.Drawing.Size(29, 23);
-            this.mathCalcButton6.TabIndex = 0;
-            this.mathCalcButton6.Text = "_";
-            this.mathCalcButton6.Click += new System.EventHandler(this.mathCalcButton6_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(958, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.btnClose.Size = new System.Drawing.Size(29, 23);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "X";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // notifyIcon1
             // 
@@ -355,17 +303,6 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "a:";
             // 
-            // btnRogzit
-            // 
-            this.btnRogzit.ForeColor = System.Drawing.Color.White;
-            this.btnRogzit.Location = new System.Drawing.Point(416, 165);
-            this.btnRogzit.Name = "btnRogzit";
-            this.btnRogzit.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.btnRogzit.Size = new System.Drawing.Size(118, 36);
-            this.btnRogzit.TabIndex = 0;
-            this.btnRogzit.Text = "💾 Rögzít";
-            this.btnRogzit.Click += new System.EventHandler(this.btnRogzit_Click);
-            // 
             // grpBxEgyenletek
             // 
             this.grpBxEgyenletek.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -385,7 +322,7 @@
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
+            this.clmnHId,
             this.clmnHEgyenlet,
             this.clmnHAEgyutthato,
             this.clmnHBEgyutthato,
@@ -403,10 +340,10 @@
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             // 
-            // columnHeader1
+            // clmnHId
             // 
-            this.columnHeader1.Text = "ColumnHead34er";
-            this.columnHeader1.Width = 0;
+            this.clmnHId.Text = "Id";
+            this.clmnHId.Width = 0;
             // 
             // clmnHEgyenlet
             // 
@@ -430,6 +367,33 @@
             this.clmnHCEgyutthato.Text = "\"c\" együttható";
             this.clmnHCEgyutthato.Width = 0;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(12, 573);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(190, 21);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "© 2020 - Jóföldi Krisztián";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "xml";
+            this.saveFileDialog1.Filter = "Xml  fájlok  (*.xml)|*.xml|Minden fájl (*.*)|*.*\"";
+            this.saveFileDialog1.Title = "XML fájlok böngészése";
+            // 
+            // btnRogzit
+            // 
+            this.btnRogzit.ForeColor = System.Drawing.Color.White;
+            this.btnRogzit.Location = new System.Drawing.Point(416, 165);
+            this.btnRogzit.Name = "btnRogzit";
+            this.btnRogzit.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.btnRogzit.Size = new System.Drawing.Size(118, 36);
+            this.btnRogzit.TabIndex = 0;
+            this.btnRogzit.Text = "💾 Rögzít";
+            this.btnRogzit.Click += new System.EventHandler(this.btnRogzit_Click);
+            // 
             // mthClcBtnTorles
             // 
             this.mthClcBtnTorles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -443,15 +407,59 @@
             this.mthClcBtnTorles.Text = "🗑 Kijelölt(ek) törlése";
             this.mthClcBtnTorles.Click += new System.EventHandler(this.mthClcBtnTorles_Click);
             // 
-            // label3
+            // cstmImgBtnMentes
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(12, 573);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(190, 21);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "© 2020 - Jóföldi Krisztián";
+            this.cstmImgBtnMentes.Image = global::MathCalc.Properties.Resources.floppy_white;
+            this.cstmImgBtnMentes.ImageEnter = global::MathCalc.Properties.Resources.floppy_orange;
+            this.cstmImgBtnMentes.ImageNormal = global::MathCalc.Properties.Resources.floppy_white;
+            this.cstmImgBtnMentes.Location = new System.Drawing.Point(490, 35);
+            this.cstmImgBtnMentes.Name = "cstmImgBtnMentes";
+            this.cstmImgBtnMentes.Size = new System.Drawing.Size(64, 56);
+            this.cstmImgBtnMentes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.cstmImgBtnMentes.TabIndex = 3;
+            this.cstmImgBtnMentes.TabStop = false;
+            this.cstmImgBtnMentes.Click += new System.EventHandler(this.cstmImgBtnMentes_Click);
+            this.cstmImgBtnMentes.MouseEnter += new System.EventHandler(this.cstmImgBtnMentes_MouseEnter);
+            this.cstmImgBtnMentes.MouseLeave += new System.EventHandler(this.cstmImgBtnMentes_MouseLeave);
+            // 
+            // mathCalcButton4
+            // 
+            this.mathCalcButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mathCalcButton4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.mathCalcButton4.ForeColor = System.Drawing.Color.White;
+            this.mathCalcButton4.Location = new System.Drawing.Point(893, 12);
+            this.mathCalcButton4.Name = "mathCalcButton4";
+            this.mathCalcButton4.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.mathCalcButton4.Size = new System.Drawing.Size(29, 23);
+            this.mathCalcButton4.TabIndex = 0;
+            this.mathCalcButton4.Text = "?";
+            this.mathCalcButton4.Click += new System.EventHandler(this.mathCalcButton4_Click);
+            // 
+            // mathCalcButton6
+            // 
+            this.mathCalcButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mathCalcButton6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.mathCalcButton6.ForeColor = System.Drawing.Color.White;
+            this.mathCalcButton6.Location = new System.Drawing.Point(924, 12);
+            this.mathCalcButton6.Name = "mathCalcButton6";
+            this.mathCalcButton6.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.mathCalcButton6.Size = new System.Drawing.Size(29, 23);
+            this.mathCalcButton6.TabIndex = 0;
+            this.mathCalcButton6.Text = "_";
+            this.mathCalcButton6.Click += new System.EventHandler(this.mathCalcButton6_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(958, 12);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.btnClose.Size = new System.Drawing.Size(29, 23);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.Text = "X";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // MathCalcFrm
             // 
@@ -467,7 +475,6 @@
             this.Text = "Másodrendű Egyenlet Kalkulátor";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cstmImgBtnMentes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -477,6 +484,7 @@
             this.grpBxUjEgyenlet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.grpBxEgyenletek.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cstmImgBtnMentes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -511,7 +519,7 @@
         private System.Windows.Forms.Label lblMentes;
         private CustomImageButton cstmImgBtnMentes;
         private System.Windows.Forms.TextBox txtBxA;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader clmnHId;
         private System.Windows.Forms.ColumnHeader clmnHEgyenlet;
         private System.Windows.Forms.Label lblBxX2;
         private System.Windows.Forms.Label lblBxX1;
@@ -519,6 +527,7 @@
         private System.Windows.Forms.Label lblEgyenlet;
         private System.Windows.Forms.Label lblX2;
         private System.Windows.Forms.Label lblX1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

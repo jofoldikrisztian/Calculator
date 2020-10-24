@@ -52,6 +52,7 @@
     <Compile Include="CustomImageButton.Designer.cs">
       <DependentUpon>CustomImageButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data.cs" />
     <Compile Include="MathCalcButton.cs">
       <SubType>Component</SubType>
     </Compile>
