@@ -1,34 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
-using static System.Windows.Forms.ListView;
 using System.IO;
-using System.Windows.Forms.VisualStyles;
 
 namespace MathCalc
 {
     public partial class MathCalcFrm : Form
     {
+
+        #region Mezők
+
         private const int buttondown = 0xA1;
         private const int HT_CAPTION = 0x2;
         private readonly QuadraticEquation _quadraticEquation;
 
-        
-        
+        #endregion
+
+        #region Konstruktor
         public MathCalcFrm()
         {
             InitializeComponent();
             _quadraticEquation = new QuadraticEquation();
-        
+
         }
+        #endregion
+
+        #region Események
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -39,7 +40,6 @@ namespace MathCalc
         {
             MessageBox.Show("Ez lesz a segítség menü..", "Segítség", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
 
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -70,12 +70,12 @@ namespace MathCalc
             else if (int.TryParse(txtBxA.Text, out _) && int.TryParse(txtBxB.Text, out _) && int.TryParse(txtBxC.Text, out _))
             {
                 string equation = txtBxA.Text + "x² + " + txtBxB.Text + "x + " + txtBxC.Text;
-                ListViewItem newItem = new ListViewItem(new string[] { (listView1.Items.Count + 1).ToString(), equation, txtBxA.Text, txtBxB.Text, txtBxC.Text });
+                ListViewItem newItem = new ListViewItem(new string[] { (listView.Items.Count + 1).ToString(), equation, txtBxA.Text, txtBxB.Text, txtBxC.Text });
                 newItem.Name = equation;
 
-                if (!listView1.Items.ContainsKey(newItem.Name))
+                if (!listView.Items.ContainsKey(newItem.Name))
                 {
-                    listView1.Items.Add(newItem);
+                    listView.Items.Add(newItem);
                     clearTextBoxes();
                 }
                 else
@@ -93,13 +93,6 @@ namespace MathCalc
 
         }
 
-        private void clearTextBoxes()
-        {
-            txtBxA.Clear();
-            txtBxB.Clear();
-            txtBxC.Clear();
-        }
-
         private void cstmImgBtnMentes_MouseEnter(object sender, EventArgs e)
         {
             lblMentes.ForeColor = Color.Orange;
@@ -115,14 +108,14 @@ namespace MathCalc
         private void mthClcBtnTorles_Click(object sender, EventArgs e)
         {
 
-            if (listView1.SelectedItems.Count > 0)
+            if (listView.SelectedItems.Count > 0)
             {
 
                 if (MessageBox.Show("Biztos vagy benne?", "Figyelmeztetés", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
-                    foreach (ListViewItem item in listView1.SelectedItems)
+                    foreach (ListViewItem item in listView.SelectedItems)
                     {
-                        listView1.Items.Remove(item);
+                        listView.Items.Remove(item);
                     }
                     lblBxX1.Text = "";
                     lblBxX2.Text = "";
@@ -132,17 +125,17 @@ namespace MathCalc
             else
             {
                 MessageBox.Show("Nem jelöltél ki egy elemet sem!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }  
+            }
         }
 
         private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
 
 
-            if (listView1.SelectedItems.Count > 0)
+            if (listView.SelectedItems.Count > 0)
             {
 
-                ListViewItem item = listView1.SelectedItems[0];
+                ListViewItem item = listView.SelectedItems[0];
 
                 var aValue = float.Parse(item.SubItems[clmnHAEgyutthato.Index].Text);
                 var bValue = float.Parse(item.SubItems[clmnHBEgyutthato.Index].Text);
@@ -154,33 +147,45 @@ namespace MathCalc
                 lblBxX1.Text = result.FirstValue;
                 lblBxX2.Text = result.SecondValue;
             }
-         
+
         }
 
         private void cstmImgBtnMentes_Click(object sender, EventArgs e)
         {
 
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            if (saveFile.ShowDialog() == DialogResult.OK)
             {
-                string fileName = saveFileDialog1.FileName;
-                MessageBox.Show(fileName, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string fileName = saveFile.FileName;
+                //MessageBox.Show(fileName, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 SaveToXml(fileName);
             }
 
-
-           
         }
 
-        public void SaveToXml(string myXmlFilePath)
+        private void cstmImgBtnBetoltes_Click(object sender, EventArgs e)
+        {
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = openFile.FileName;
+
+                LoadFromXml(fileName);
+            }
+        }
+
+        #endregion
+
+        #region Metódusok
+
+        public void SaveToXml(string XmlFilePath)
         {
             List<Data> datas = new List<Data>();
-            Data data = new Data();
+            Data data;
 
-            foreach (ListViewItem item in listView1.Items)
+            foreach (ListViewItem item in listView.Items)
             {
+                data = new Data();
                 data.Id = int.Parse(item.SubItems[clmnHId.Index].Text);
-                data.Equation = item.SubItems[clmnHEgyenlet.Index].Text;
                 data.A = item.SubItems[clmnHAEgyutthato.Index].Text;
                 data.B = item.SubItems[clmnHBEgyutthato.Index].Text;
                 data.C = item.SubItems[clmnHCEgyutthato.Index].Text;
@@ -189,10 +194,44 @@ namespace MathCalc
 
             XmlSerializer serializer = new XmlSerializer(typeof(List<Data>));
 
-            using (FileStream stream = File.OpenWrite(myXmlFilePath))
+            using (FileStream stream = File.OpenWrite(XmlFilePath))
             {
                 serializer.Serialize(stream, datas);
             }
         }
+
+        public void LoadFromXml(string xmlFilePath)
+        {
+        //    listView.Clear();
+            List<Data> datas = new List<Data>();
+
+            if (File.Exists(xmlFilePath))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Data>));
+
+                using (FileStream stream = File.OpenRead(xmlFilePath))
+                {
+                    datas = (List<Data>)serializer.Deserialize(stream);
+                }
+            }
+
+            foreach (Data item in datas)
+            {
+                string equation = item.A + "x² + " + item.B + "x + " + item.C;
+                ListViewItem newItem = new ListViewItem(new string[] { item.Id.ToString(), equation, item.A, item.B, item.C });
+                newItem.Name = equation;
+                listView.Items.Add(newItem);
+            }
+        }
+
+        private void clearTextBoxes()
+        {
+            txtBxA.Clear();
+            txtBxB.Clear();
+            txtBxC.Clear();
+        }
+
+        #endregion
+
     }
 }
