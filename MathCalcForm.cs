@@ -17,6 +17,7 @@ namespace MathCalc
         private const int buttondown = 0xA1;
         private const int HT_CAPTION = 0x2;
         private readonly QuadraticEquation _quadraticEquation;
+        
 
         #endregion
 
@@ -173,6 +174,51 @@ namespace MathCalc
             }
         }
 
+        private void MathCalcFrm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.X)
+            {
+                Application.Exit();
+            }
+            else if (e.Control && e.KeyCode == Keys.O)
+            {
+                cstmImgBtnBetoltes_Click(sender, e);
+            }
+            else if (e.Control && e.KeyCode == Keys.S)
+            {
+                cstmImgBtnMentes_Click(sender, e);
+            }
+            else if (e.Control && e.KeyCode == Keys.R)
+            {
+                btnRogzit_Click(sender, e);
+            }
+            else if (e.Control && e.KeyCode == Keys.D)
+            {
+                mthClcBtnTorles_Click(sender, e);
+            }
+            else if (e.Control && e.KeyCode == Keys.I)
+            {
+                foreach (ListViewItem item in listView.Items)
+                {
+                    item.Selected = !(item.Selected);
+                }
+            }
+            else if (e.Control && e.KeyCode == Keys.A)
+            {
+                foreach (ListViewItem item in listView.Items)
+                {
+                    item.Selected = true;
+                }
+            }
+            else if (e.Control && e.KeyCode == Keys.N)
+            {
+                foreach (ListViewItem item in listView.SelectedItems)
+                {
+                    item.Selected = false;
+                }
+            }
+        }
+
         #endregion
 
         #region Metódusok
@@ -182,7 +228,7 @@ namespace MathCalc
             List<Data> datas = new List<Data>();
             Data data;
 
-            foreach (ListViewItem item in listView.Items)
+            foreach (ListViewItem item in listView.SelectedItems)
             {
                 data = new Data();
                 data.Id = int.Parse(item.SubItems[clmnHId.Index].Text);
@@ -202,7 +248,7 @@ namespace MathCalc
 
         public void LoadFromXml(string xmlFilePath)
         {
-        //    listView.Clear();
+        //    listView.Items.Clear();
             List<Data> datas = new List<Data>();
 
             if (File.Exists(xmlFilePath))
@@ -220,7 +266,11 @@ namespace MathCalc
                 string equation = item.A + "x² + " + item.B + "x + " + item.C;
                 ListViewItem newItem = new ListViewItem(new string[] { item.Id.ToString(), equation, item.A, item.B, item.C });
                 newItem.Name = equation;
-                listView.Items.Add(newItem);
+
+                if (!listView.Items.ContainsKey(newItem.Name))
+                {
+                    listView.Items.Add(newItem);
+                }
             }
         }
 
