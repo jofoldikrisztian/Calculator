@@ -104,10 +104,28 @@
     <None Include="Resources\quadratic.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\floppy_orange.png" />
+    <None Include="Resources\open_file_hot.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\floppy_white.png" />
+    <None Include="Resources\open_file_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_file_hot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save_file_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_hot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_hot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help_normal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

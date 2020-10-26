@@ -73,9 +73,9 @@ namespace MathCalc.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap floppy_orange {
+        internal static System.Drawing.Bitmap help_hot {
             get {
-                object obj = ResourceManager.GetObject("floppy_orange", resourceCulture);
+                object obj = ResourceManager.GetObject("help_hot", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace MathCalc.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap floppy_white {
+        internal static System.Drawing.Bitmap help_normal {
             get {
-                object obj = ResourceManager.GetObject("floppy_white", resourceCulture);
+                object obj = ResourceManager.GetObject("help_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,69 @@ namespace MathCalc.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap open_file_hot {
+            get {
+                object obj = ResourceManager.GetObject("open_file_hot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_file_normal {
+            get {
+                object obj = ResourceManager.GetObject("open_file_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap quadratic {
             get {
                 object obj = ResourceManager.GetObject("quadratic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_file_hot {
+            get {
+                object obj = ResourceManager.GetObject("save_file_hot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_file_normal {
+            get {
+                object obj = ResourceManager.GetObject("save_file_normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_hot {
+            get {
+                object obj = ResourceManager.GetObject("settings_hot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_normal {
+            get {
+                object obj = ResourceManager.GetObject("settings_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

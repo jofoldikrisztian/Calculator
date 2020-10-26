@@ -17,7 +17,6 @@ namespace MathCalc
         private const int buttondown = 0xA1;
         private const int HT_CAPTION = 0x2;
         private readonly QuadraticEquation _quadraticEquation;
-        
 
         #endregion
 
@@ -32,14 +31,20 @@ namespace MathCalc
 
         #region Események
 
+        #region Ablakvezérlők
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void mathCalcButton4_Click(object sender, EventArgs e)
+        private void btnHelp_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Ez lesz a segítség menü..", "Segítség", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
 
         [DllImport("user32.dll")]
@@ -57,10 +62,82 @@ namespace MathCalc
             }
         }
 
-        private void mathCalcButton6_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Menüsáv
+
+        private void btnMentes_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
+
+            if (saveFile.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = saveFile.FileName;
+                //MessageBox.Show(fileName, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                SaveToXml(fileName);
+            }
+
         }
+        private void BtnMentes_MouseEnter(object sender, EventArgs e)
+        {
+            lblMentes.Font = new Font(lblMentes.Font, FontStyle.Bold);
+            Cursor = Cursors.Hand;
+        }
+        private void BtnMentes_MouseLeave(object sender, EventArgs e)
+        {
+            lblMentes.Font = new Font(lblMentes.Font, FontStyle.Regular);
+            Cursor = Cursors.Default;
+        }
+
+        private void btnMegnyitas_Click(object sender, EventArgs e)
+        {
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = openFile.FileName;
+
+                LoadFromXml(fileName);
+            }
+        }
+        private void btnMegnyitas_MouseEnter(object sender, EventArgs e)
+        {
+            lblMegnyitas.Font = new Font(lblMegnyitas.Font, FontStyle.Bold);
+            Cursor = Cursors.Hand;
+        }
+        private void btnMegnyitas_MouseLeave(object sender, EventArgs e)
+        {
+            lblMegnyitas.Font = new Font(lblMegnyitas.Font, FontStyle.Regular);
+            Cursor = Cursors.Default;
+        }
+
+        private void btnBeallitasok_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnBeallitasok_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+        private void btnBeallitasok_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSegitseg_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnSegitseg_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+        private void btnSegitseg_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region Adatműveletek
 
         private void btnRogzit_Click(object sender, EventArgs e)
         {
@@ -94,19 +171,7 @@ namespace MathCalc
 
         }
 
-        private void cstmImgBtnMentes_MouseEnter(object sender, EventArgs e)
-        {
-            lblMentes.ForeColor = Color.Orange;
-            Cursor = Cursors.Hand;
-        }
-
-        private void cstmImgBtnMentes_MouseLeave(object sender, EventArgs e)
-        {
-            lblMentes.ForeColor = Color.White;
-            Cursor = Cursors.Default;
-        }
-
-        private void mthClcBtnTorles_Click(object sender, EventArgs e)
+        private void btnTorles_Click(object sender, EventArgs e)
         {
 
             if (listView.SelectedItems.Count > 0)
@@ -129,7 +194,7 @@ namespace MathCalc
             }
         }
 
-        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        private void lV(object sender, MouseEventArgs e)
         {
 
 
@@ -138,41 +203,21 @@ namespace MathCalc
 
                 ListViewItem item = listView.SelectedItems[0];
 
-                var aValue = float.Parse(item.SubItems[clmnHAEgyutthato.Index].Text);
-                var bValue = float.Parse(item.SubItems[clmnHBEgyutthato.Index].Text);
-                var cValue = float.Parse(item.SubItems[clmnHCEgyutthato.Index].Text);
+                var aegyutthato = float.Parse(item.SubItems[clmnHAEgyutthato.Index].Text);
+                var begyutthato = float.Parse(item.SubItems[clmnHBEgyutthato.Index].Text);
+                var cegyutthato = float.Parse(item.SubItems[clmnHCEgyutthato.Index].Text);
 
-                QuadraticResult result = _quadraticEquation.GetResult(aValue, bValue, cValue);
+                QuadraticResult result = _quadraticEquation.GetResult(aegyutthato, begyutthato, cegyutthato);
 
                 lblBxEgyenlet.Text = item.SubItems[clmnHEgyenlet.Index].Text;
                 lblBxX1.Text = result.FirstValue;
                 lblBxX2.Text = result.SecondValue;
             }
-
         }
 
-        private void cstmImgBtnMentes_Click(object sender, EventArgs e)
-        {
+        #endregion
 
-            if (saveFile.ShowDialog() == DialogResult.OK)
-            {
-                string fileName = saveFile.FileName;
-                //MessageBox.Show(fileName, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                SaveToXml(fileName);
-            }
-
-        }
-
-        private void cstmImgBtnBetoltes_Click(object sender, EventArgs e)
-        {
-            if (openFile.ShowDialog() == DialogResult.OK)
-            {
-                string fileName = openFile.FileName;
-
-                LoadFromXml(fileName);
-            }
-        }
+        #region Gyorsbillentyűk
 
         private void MathCalcFrm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -182,11 +227,11 @@ namespace MathCalc
             }
             else if (e.Control && e.KeyCode == Keys.O)
             {
-                cstmImgBtnBetoltes_Click(sender, e);
+                btnMegnyitas_Click(sender, e);
             }
             else if (e.Control && e.KeyCode == Keys.S)
             {
-                cstmImgBtnMentes_Click(sender, e);
+                btnMentes_Click(sender, e);
             }
             else if (e.Control && e.KeyCode == Keys.R)
             {
@@ -194,7 +239,7 @@ namespace MathCalc
             }
             else if (e.Control && e.KeyCode == Keys.D)
             {
-                mthClcBtnTorles_Click(sender, e);
+                btnTorles_Click(sender, e);
             }
             else if (e.Control && e.KeyCode == Keys.I)
             {
@@ -217,7 +262,13 @@ namespace MathCalc
                     item.Selected = false;
                 }
             }
+            else if (e.KeyCode == Keys.F1)
+            {
+                btnHelp_Click(sender, e);
+            }
         }
+
+        #endregion
 
         #endregion
 
@@ -281,7 +332,15 @@ namespace MathCalc
             txtBxC.Clear();
         }
 
+
+
+
+
+
+
+
         #endregion
 
+  
     }
 }
