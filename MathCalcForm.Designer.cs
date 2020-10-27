@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MathCalcFrm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblHelp = new System.Windows.Forms.Label();
+            this.lblSegitseg = new System.Windows.Forms.Label();
             this.lblBeallitasok = new System.Windows.Forms.Label();
             this.lblMegnyitas = new System.Windows.Forms.Label();
             this.lblMentes = new System.Windows.Forms.Label();
@@ -45,7 +44,6 @@
             this.mathCalcButton4 = new MathCalc.MathCalcButton();
             this.mathCalcButton6 = new MathCalc.MathCalcButton();
             this.btnClose = new MathCalc.MathCalcButton();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.saveFile = new System.Windows.Forms.SaveFileDialog();
             this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -90,7 +88,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(50)))), ((int)(((byte)(94)))));
-            this.panel1.Controls.Add(this.lblHelp);
+            this.panel1.Controls.Add(this.lblSegitseg);
             this.panel1.Controls.Add(this.lblBeallitasok);
             this.panel1.Controls.Add(this.lblMegnyitas);
             this.panel1.Controls.Add(this.lblMentes);
@@ -111,16 +109,16 @@
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // lblHelp
+            // lblSegitseg
             // 
-            this.lblHelp.AutoSize = true;
-            this.lblHelp.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.lblHelp.ForeColor = System.Drawing.Color.White;
-            this.lblHelp.Location = new System.Drawing.Point(767, 94);
-            this.lblHelp.Name = "lblHelp";
-            this.lblHelp.Size = new System.Drawing.Size(70, 20);
-            this.lblHelp.TabIndex = 4;
-            this.lblHelp.Text = "Segítség";
+            this.lblSegitseg.AutoSize = true;
+            this.lblSegitseg.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.lblSegitseg.ForeColor = System.Drawing.Color.White;
+            this.lblSegitseg.Location = new System.Drawing.Point(767, 94);
+            this.lblSegitseg.Name = "lblSegitseg";
+            this.lblSegitseg.Size = new System.Drawing.Size(70, 20);
+            this.lblSegitseg.TabIndex = 4;
+            this.lblSegitseg.Text = "Segítség";
             // 
             // lblBeallitasok
             // 
@@ -285,11 +283,6 @@
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "X";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
             // 
             // saveFile
             // 
@@ -485,7 +478,7 @@
             this.grpBxEgyenletek.Size = new System.Drawing.Size(264, 541);
             this.grpBxEgyenletek.TabIndex = 2;
             this.grpBxEgyenletek.TabStop = false;
-            this.grpBxEgyenletek.Text = "Egyenletek";
+            this.grpBxEgyenletek.Text = "ax²+bx+c=0";
             // 
             // listView
             // 
@@ -569,9 +562,11 @@
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "MathCalcFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Másodrendű Egyenlet Kalkulátor";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MathCalcFrm_KeyDown);
             this.panel1.ResumeLayout(false);
@@ -615,7 +610,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ColumnHeader clmnHAEgyutthato;
         private System.Windows.Forms.ColumnHeader clmnHBEgyutthato;
@@ -637,7 +631,7 @@
         private System.Windows.Forms.Label lblMegnyitas;
         private System.Windows.Forms.Label lblBeallitasok;
         private CustomImageButton btnBeallitasok;
-        private System.Windows.Forms.Label lblHelp;
+        private System.Windows.Forms.Label lblSegitseg;
         private CustomImageButton btnSegitseg;
     }
 }

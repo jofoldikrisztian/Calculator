@@ -1,0 +1,13 @@
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\bin\Release\MathCalc.exe.config
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\bin\Release\MathCalc.exe
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\bin\Release\MathCalc.pdb
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.csprojAssemblyReference.cache
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.CustomImageButton.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.MathCalcFrm.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.Properties.Resources.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.SettingsFrm.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.csproj.GenerateResource.cache
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.csproj.CoreCompileInputs.cache
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.exe
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.pdb
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.HelpFrm.resources

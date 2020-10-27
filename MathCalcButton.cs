@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace MathCalc
 {
-    class MathCalcButton : Control
+    class MathCalcButton : Button
     {
         #region variables
 
@@ -16,9 +16,11 @@ namespace MathCalc
 
         private Color onHoverBackColor = Color.FromArgb(30,84,161);
 
+
         #endregion
 
 
+   
         public Color OnHoverBackColor
         {
             get { return onHoverBackColor; }
@@ -28,10 +30,9 @@ namespace MathCalc
 
         public MathCalcButton()
         {
-         
+            
             ForeColor = Color.White;
-            CurrentBackColor = Color.FromArgb(30, 50, 94);
-
+            CurrentBackColor = Color.FromArgb(30, 50, 94);      
         }
 
         #region

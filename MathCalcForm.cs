@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using System.IO;
+using System.Linq;
 
 namespace MathCalc
 {
@@ -17,6 +18,9 @@ namespace MathCalc
         private const int buttondown = 0xA1;
         private const int HT_CAPTION = 0x2;
         private readonly QuadraticEquation _quadraticEquation;
+        private bool askToDelete;
+        public static bool askToDeleteHelper;
+
 
         #endregion
 
@@ -25,6 +29,7 @@ namespace MathCalc
         {
             InitializeComponent();
             _quadraticEquation = new QuadraticEquation();
+            askToDelete = true;
 
         }
         #endregion
@@ -39,7 +44,8 @@ namespace MathCalc
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ez lesz a segítség menü..", "Segítség", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            btnSegitseg_Click(sender, e);
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -69,12 +75,17 @@ namespace MathCalc
         private void btnMentes_Click(object sender, EventArgs e)
         {
 
-            if (saveFile.ShowDialog() == DialogResult.OK)
+            if (listView.SelectedItems.Count == 0)
             {
-                string fileName = saveFile.FileName;
-                //MessageBox.Show(fileName, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                SaveToXml(fileName);
+                MessageBox.Show("Egy elem sincs kijelölve!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (saveFile.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = saveFile.FileName;
+                    SaveToXml(fileName);
+                }
             }
 
         }
@@ -112,27 +123,81 @@ namespace MathCalc
         private void btnBeallitasok_Click(object sender, EventArgs e)
         {
 
+
+            askToDeleteHelper = askToDelete;
+
+            try
+            {
+                using (SettingsFrm settingsFrm = new SettingsFrm())
+                {
+                    var defaultOpacity = Opacity;
+                    Opacity = .50d;
+
+                    DialogResult dialogResult = settingsFrm.ShowDialog();
+                    if (dialogResult == DialogResult.OK)
+                    {
+                        askToDelete = askToDeleteHelper;
+                        Opacity = defaultOpacity;
+                    }
+                    else
+                    {
+                        Opacity = defaultOpacity;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
+
         private void btnBeallitasok_MouseEnter(object sender, EventArgs e)
         {
-
+            lblBeallitasok.Font = new Font(lblBeallitasok.Font, FontStyle.Bold);
+            Cursor = Cursors.Hand;
         }
         private void btnBeallitasok_MouseLeave(object sender, EventArgs e)
         {
-
+            lblBeallitasok.Font = new Font(lblBeallitasok.Font, FontStyle.Regular);
+            Cursor = Cursors.Default;
         }
 
         private void btnSegitseg_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (HelpFrm helpFrm = new HelpFrm())
+                {
+                    var defaultOpacity = Opacity;
+                    Opacity = .50d;
+
+                    DialogResult dialogResult = helpFrm.ShowDialog();
+                    if (dialogResult == DialogResult.OK)
+                    {
+                        Opacity = defaultOpacity;
+                    }
+                    else
+                    {
+                        Opacity = defaultOpacity;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
         private void btnSegitseg_MouseEnter(object sender, EventArgs e)
         {
-
+            lblSegitseg.Font = new Font(lblSegitseg.Font, FontStyle.Bold);
+            Cursor = Cursors.Hand;
         }
         private void btnSegitseg_MouseLeave(object sender, EventArgs e)
         {
-
+            lblSegitseg.Font = new Font(lblSegitseg.Font, FontStyle.Regular);
+            Cursor = Cursors.Default;
         }
 
         #endregion
@@ -145,9 +210,10 @@ namespace MathCalc
             {
                 MessageBox.Show("Hiányzó adat!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (int.TryParse(txtBxA.Text, out _) && int.TryParse(txtBxB.Text, out _) && int.TryParse(txtBxC.Text, out _))
+            else if (float.TryParse(txtBxA.Text, out float a) && float.TryParse(txtBxB.Text, out float b) && float.TryParse(txtBxC.Text, out float c))
             {
-                string equation = txtBxA.Text + "x² + " + txtBxB.Text + "x + " + txtBxC.Text;
+                // string equation = txtBxA.Text + "x² + " + txtBxB.Text + "x + " + txtBxC.Text;
+                string equation = EquationGenerator(a, b, c);
                 ListViewItem newItem = new ListViewItem(new string[] { (listView.Items.Count + 1).ToString(), equation, txtBxA.Text, txtBxB.Text, txtBxC.Text });
                 newItem.Name = equation;
 
@@ -171,13 +237,14 @@ namespace MathCalc
 
         }
 
+
         private void btnTorles_Click(object sender, EventArgs e)
         {
 
             if (listView.SelectedItems.Count > 0)
             {
 
-                if (MessageBox.Show("Biztos vagy benne?", "Figyelmeztetés", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+                if (askToDelete ? MessageBox.Show("Biztos vagy benne?", "Figyelmeztetés", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK : true)
                 {
                     foreach (ListViewItem item in listView.SelectedItems)
                     {
@@ -196,9 +263,7 @@ namespace MathCalc
 
         private void lV(object sender, MouseEventArgs e)
         {
-
-
-            if (listView.SelectedItems.Count > 0)
+            if (listView.SelectedItems.Count == 1)
             {
 
                 ListViewItem item = listView.SelectedItems[0];
@@ -213,6 +278,14 @@ namespace MathCalc
                 lblBxX1.Text = result.FirstValue;
                 lblBxX2.Text = result.SecondValue;
             }
+            else
+            {
+                lblBxEgyenlet.Text = "Több egyenlet van kijelölve!";
+                lblBxX1.Text = "";
+                lblBxX2.Text = "";
+            }
+
+
         }
 
         #endregion
@@ -276,10 +349,11 @@ namespace MathCalc
 
         public void SaveToXml(string XmlFilePath)
         {
+
             List<Data> datas = new List<Data>();
             Data data;
 
-            foreach (ListViewItem item in listView.SelectedItems)
+            Parallel.ForEach(listView.SelectedItems.Cast<ListViewItem>(), item =>
             {
                 data = new Data();
                 data.Id = int.Parse(item.SubItems[clmnHId.Index].Text);
@@ -287,19 +361,33 @@ namespace MathCalc
                 data.B = item.SubItems[clmnHBEgyutthato.Index].Text;
                 data.C = item.SubItems[clmnHCEgyutthato.Index].Text;
                 datas.Add(data);
-            }
+            });
+
+            List<Data> sortedData = datas.OrderBy(o => o.Id).ToList();
+            //foreach (ListViewItem item in listView.SelectedItems)
+            //{
+            //    data = new Data();
+            //    data.Id = int.Parse(item.SubItems[clmnHId.Index].Text);
+            //    data.A = item.SubItems[clmnHAEgyutthato.Index].Text;
+            //    data.B = item.SubItems[clmnHBEgyutthato.Index].Text;
+            //    data.C = item.SubItems[clmnHCEgyutthato.Index].Text;
+            //    datas.Add(data);
+            //}
+
+
 
             XmlSerializer serializer = new XmlSerializer(typeof(List<Data>));
 
             using (FileStream stream = File.OpenWrite(XmlFilePath))
             {
-                serializer.Serialize(stream, datas);
+                serializer.Serialize(stream, sortedData);
             }
+
         }
 
         public void LoadFromXml(string xmlFilePath)
         {
-        //    listView.Items.Clear();
+            //  listView.Items.Clear();
             List<Data> datas = new List<Data>();
 
             if (File.Exists(xmlFilePath))
@@ -314,7 +402,8 @@ namespace MathCalc
 
             foreach (Data item in datas)
             {
-                string equation = item.A + "x² + " + item.B + "x + " + item.C;
+
+                string equation = EquationGenerator(float.Parse(item.A), float.Parse(item.B), float.Parse(item.C));
                 ListViewItem newItem = new ListViewItem(new string[] { item.Id.ToString(), equation, item.A, item.B, item.C });
                 newItem.Name = equation;
 
@@ -333,14 +422,27 @@ namespace MathCalc
         }
 
 
-
-
-
-
-
+        private string EquationGenerator(float a, float b, float c)
+        {
+            if (b < 0 && c < 0)
+            {
+                return $"{a}x² {b}x {c}";
+            }
+            else if (b > 0 && c < 0)
+            {
+                return $"{a}x² + {b}x {c}";
+            }
+            else if (b < 0 && c > 0)
+            {
+                return $"{a}x² {b}x + {c}";
+            }
+            else
+            {
+                return $"{a}x² + {b}x + {c}";
+            }
+        }
 
         #endregion
 
-  
     }
 }
