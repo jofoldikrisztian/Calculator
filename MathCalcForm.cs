@@ -30,7 +30,7 @@ namespace MathCalc
             InitializeComponent();
             _quadraticEquation = new QuadraticEquation();
             askToDelete = true;
-
+         
         }
         #endregion
 
