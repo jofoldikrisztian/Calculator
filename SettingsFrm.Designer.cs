@@ -92,7 +92,7 @@
             this.btnMegsem.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
             this.btnMegsem.Size = new System.Drawing.Size(132, 33);
             this.btnMegsem.TabIndex = 5;
-            this.btnMegsem.Text = "Mégsem";
+            this.btnMegsem.Text = "Mégse";
             // 
             // btnAlkalmaz
             // 
@@ -122,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::MathCalc.Properties.Resources.honeycomb;
             this.ClientSize = new System.Drawing.Size(581, 285);
             this.Controls.Add(this.btnMegsem);

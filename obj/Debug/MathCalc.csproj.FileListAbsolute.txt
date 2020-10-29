@@ -10,3 +10,16 @@ D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejleszté
 D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Debug\MathCalc.pdb
 D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Debug\MathCalc.CustomImageButton.resources
 D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Debug\MathCalc.SettingsFrm.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\bin\Debug\MathCalc.exe.config
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\bin\Debug\MathCalc.exe
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\bin\Debug\MathCalc.pdb
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.csprojAssemblyReference.cache
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.CustomImageButton.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.HelpFrm.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.MathCalcFrm.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.Properties.Resources.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.SettingsFrm.resources
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.csproj.GenerateResource.cache
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.csproj.CoreCompileInputs.cache
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.exe
+D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\Done\MathCalc\obj\Debug\MathCalc.pdb

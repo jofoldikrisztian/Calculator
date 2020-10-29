@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace MathCalc
 {
@@ -17,9 +18,11 @@ namespace MathCalc
 
         private const int buttondown = 0xA1;
         private const int HT_CAPTION = 0x2;
-        private readonly QuadraticEquation _quadraticEquation;
         private bool askToDelete;
         public static bool askToDeleteHelper;
+        public static QuadraticResult quadraticResult;
+        public static string tempEquation;
+
 
 
         #endregion
@@ -28,9 +31,10 @@ namespace MathCalc
         public MathCalcFrm()
         {
             InitializeComponent();
-            _quadraticEquation = new QuadraticEquation();
+            quadraticResult = new QuadraticResult();
             askToDelete = true;
-         
+            backgroundWorker1.WorkerReportsProgress = true;
+            backgroundWorker1.WorkerSupportsCancellation = true;
         }
         #endregion
 
@@ -44,7 +48,6 @@ namespace MathCalc
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-
             btnSegitseg_Click(sender, e);
         }
 
@@ -87,7 +90,6 @@ namespace MathCalc
                     SaveToXml(fileName);
                 }
             }
-
         }
         private void BtnMentes_MouseEnter(object sender, EventArgs e)
         {
@@ -99,7 +101,6 @@ namespace MathCalc
             lblMentes.Font = new Font(lblMentes.Font, FontStyle.Regular);
             Cursor = Cursors.Default;
         }
-
         private void btnMegnyitas_Click(object sender, EventArgs e)
         {
             if (openFile.ShowDialog() == DialogResult.OK)
@@ -122,8 +123,6 @@ namespace MathCalc
 
         private void btnBeallitasok_Click(object sender, EventArgs e)
         {
-
-
             askToDeleteHelper = askToDelete;
 
             try
@@ -149,7 +148,6 @@ namespace MathCalc
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void btnBeallitasok_MouseEnter(object sender, EventArgs e)
@@ -187,7 +185,6 @@ namespace MathCalc
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
         private void btnSegitseg_MouseEnter(object sender, EventArgs e)
         {
@@ -203,7 +200,6 @@ namespace MathCalc
         #endregion
 
         #region Adatműveletek
-
         private void btnRogzit_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtBxA.Text) || string.IsNullOrEmpty(txtBxB.Text) || string.IsNullOrEmpty(txtBxC.Text))
@@ -212,7 +208,6 @@ namespace MathCalc
             }
             else if (float.TryParse(txtBxA.Text, out float a) && float.TryParse(txtBxB.Text, out float b) && float.TryParse(txtBxC.Text, out float c))
             {
-                // string equation = txtBxA.Text + "x² + " + txtBxB.Text + "x + " + txtBxC.Text;
                 string equation = EquationGenerator(a, b, c);
                 ListViewItem newItem = new ListViewItem(new string[] { (listView.Items.Count + 1).ToString(), equation, txtBxA.Text, txtBxB.Text, txtBxC.Text });
                 newItem.Name = equation;
@@ -227,23 +222,17 @@ namespace MathCalc
                     MessageBox.Show("A táblázat már tartalmazza ezt az egyenletet!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clearTextBoxes();
                 }
-
             }
             else
             {
                 MessageBox.Show("Hibás paraméter!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 clearTextBoxes();
             }
-
         }
-
-
         private void btnTorles_Click(object sender, EventArgs e)
         {
-
             if (listView.SelectedItems.Count > 0)
             {
-
                 if (askToDelete ? MessageBox.Show("Biztos vagy benne?", "Figyelmeztetés", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK : true)
                 {
                     foreach (ListViewItem item in listView.SelectedItems)
@@ -261,31 +250,22 @@ namespace MathCalc
             }
         }
 
-        private void lV(object sender, MouseEventArgs e)
+        private void listView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listView.SelectedItems.Count == 1)
             {
-
-                ListViewItem item = listView.SelectedItems[0];
-
-                var aegyutthato = float.Parse(item.SubItems[clmnHAEgyutthato.Index].Text);
-                var begyutthato = float.Parse(item.SubItems[clmnHBEgyutthato.Index].Text);
-                var cegyutthato = float.Parse(item.SubItems[clmnHCEgyutthato.Index].Text);
-
-                QuadraticResult result = _quadraticEquation.GetResult(aegyutthato, begyutthato, cegyutthato);
-
-                lblBxEgyenlet.Text = item.SubItems[clmnHEgyenlet.Index].Text;
-                lblBxX1.Text = result.FirstValue;
-                lblBxX2.Text = result.SecondValue;
+                if (backgroundWorker1.IsBusy != true)
+                {
+                   
+                    backgroundWorker1.RunWorkerAsync(sender);
+                }
             }
             else
             {
-                lblBxEgyenlet.Text = "Több egyenlet van kijelölve!";
                 lblBxX1.Text = "";
                 lblBxX2.Text = "";
+                lblBxEgyenlet.Text = "";
             }
-
-
         }
 
         #endregion
@@ -341,15 +321,89 @@ namespace MathCalc
             }
         }
 
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+
+            if (lblBxEgyenlet.InvokeRequired)
+            {
+                lblBxEgyenlet.Invoke(new Action(() => lblBxEgyenlet.Text = "Türelem.... Éppen számolunk..."));
+            }
+            else
+            {
+                lblBxEgyenlet.Text = "Türelem... Éppen számolunk...";
+            }
+
+            if (lblBxX1.InvokeRequired)
+            {
+                lblBxX1.Invoke(new Action(() => lblBxX1.Text = ""));
+            }
+            else
+            {
+                lblBxX1.Text = "";
+            }
+
+            if (lblBxX2.InvokeRequired)
+            {
+                lblBxX2.Invoke(new Action(() => lblBxX2.Text = ""));
+            }
+            else
+            {
+                lblBxX2.Text = "";
+            }
+
+            var item = new ListViewItem();
+            if (listView.InvokeRequired)
+            {
+
+                listView.Invoke(new Action(() => item = listView.SelectedItems[0]));
+            }
+            else
+            {
+                item = listView.SelectedItems[0];
+            }
+
+            var aegyutthato = double.Parse(item.SubItems[clmnHAEgyutthato.Index].Text);
+            var begyutthato = double.Parse(item.SubItems[clmnHBEgyutthato.Index].Text);
+            var cegyutthato = double.Parse(item.SubItems[clmnHCEgyutthato.Index].Text);
+
+            QuadraticEquation quadraticEquation = new QuadraticEquation(aegyutthato, begyutthato, cegyutthato);
+
+            try
+            {
+                GetResult(quadraticEquation);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            tempEquation = item.SubItems[clmnHEgyenlet.Index].Text;
+
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                lblBxEgyenlet.Text = "Error: " + e.Error.Message;
+            }
+            else
+            {
+                lblBxEgyenlet.Text = tempEquation;
+                lblBxX1.Text = quadraticResult.FirstValue;
+                lblBxX2.Text = quadraticResult.SecondValue;
+            }
+        }
+
         #endregion
 
         #endregion
 
         #region Metódusok
 
-        public void SaveToXml(string XmlFilePath)
+        private void SaveToXml(string XmlFilePath)
         {
-
             List<Data> datas = new List<Data>();
             Data data;
 
@@ -364,17 +418,6 @@ namespace MathCalc
             });
 
             List<Data> sortedData = datas.OrderBy(o => o.Id).ToList();
-            //foreach (ListViewItem item in listView.SelectedItems)
-            //{
-            //    data = new Data();
-            //    data.Id = int.Parse(item.SubItems[clmnHId.Index].Text);
-            //    data.A = item.SubItems[clmnHAEgyutthato.Index].Text;
-            //    data.B = item.SubItems[clmnHBEgyutthato.Index].Text;
-            //    data.C = item.SubItems[clmnHCEgyutthato.Index].Text;
-            //    datas.Add(data);
-            //}
-
-
 
             XmlSerializer serializer = new XmlSerializer(typeof(List<Data>));
 
@@ -382,12 +425,10 @@ namespace MathCalc
             {
                 serializer.Serialize(stream, sortedData);
             }
-
         }
-
-        public void LoadFromXml(string xmlFilePath)
+        private void LoadFromXml(string xmlFilePath)
         {
-            //  listView.Items.Clear();
+            listView.Items.Clear();
             List<Data> datas = new List<Data>();
 
             if (File.Exists(xmlFilePath))
@@ -402,18 +443,16 @@ namespace MathCalc
 
             foreach (Data item in datas)
             {
+               string equation = EquationGenerator(float.Parse(item.A), float.Parse(item.B), float.Parse(item.C));
+               ListViewItem newItem = new ListViewItem(new string[] { item.Id.ToString(), equation, item.A, item.B, item.C });
+               newItem.Name = equation;
 
-                string equation = EquationGenerator(float.Parse(item.A), float.Parse(item.B), float.Parse(item.C));
-                ListViewItem newItem = new ListViewItem(new string[] { item.Id.ToString(), equation, item.A, item.B, item.C });
-                newItem.Name = equation;
-
-                if (!listView.Items.ContainsKey(newItem.Name))
-                {
-                    listView.Items.Add(newItem);
-                }
+               if (!listView.Items.ContainsKey(newItem.Name))
+               {
+                   listView.Items.Add(newItem);
+               }
             }
         }
-
         private void clearTextBoxes()
         {
             txtBxA.Clear();
@@ -421,8 +460,7 @@ namespace MathCalc
             txtBxC.Clear();
         }
 
-
-        private string EquationGenerator(float a, float b, float c)
+        private string EquationGenerator(double a, double b, double c)
         {
             if (b < 0 && c < 0)
             {
@@ -442,7 +480,31 @@ namespace MathCalc
             }
         }
 
-        #endregion
+        private void GetResult(object Data)
+        {
+            if (Data is QuadraticEquation qe)
+            {
+                double discriminant = Math.Pow(qe.B, 2) - 4 * qe.A * qe.C;
+                bool isComplex = discriminant < 0;
+                double discriminantSqrt = Math.Sqrt(Math.Abs(discriminant));
+                double firstPart = (-qe.B) / (2 * qe.A);
+                double secondPart = discriminantSqrt / (2 * qe.A);
 
+                Thread.Sleep(1000);
+
+                if (isComplex)
+                {
+                    quadraticResult.FirstValue = $"{Math.Round(firstPart, 2)} + {Math.Round(secondPart, 2)}i";
+                    quadraticResult.SecondValue = $"{Math.Round(firstPart, 2)} - {Math.Round(secondPart, 2)}i";
+                }
+                else
+                {
+                    quadraticResult.FirstValue = (Math.Round(firstPart, 2) + Math.Round(secondPart, 2)).ToString();
+                    quadraticResult.SecondValue = (Math.Round(firstPart, 2) - Math.Round(secondPart, 2)).ToString();
+                }
+            }
+        }
+
+        #endregion    
     }
 }

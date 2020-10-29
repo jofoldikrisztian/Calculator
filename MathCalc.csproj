@@ -173,9 +173,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\app_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\settings.ico" />
   </ItemGroup>
   <ItemGroup>

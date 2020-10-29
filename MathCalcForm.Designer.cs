@@ -72,6 +72,7 @@
             this.clmnHCEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mthClcBtnTorles = new MathCalc.MathCalcButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSegitseg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnBeallitasok)).BeginInit();
@@ -501,7 +502,7 @@
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lV);
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // clmnHId
             // 
@@ -552,6 +553,11 @@
             this.label3.Size = new System.Drawing.Size(190, 21);
             this.label3.TabIndex = 1;
             this.label3.Text = "© 2020 - Jóföldi Krisztián";
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // MathCalcFrm
             // 
@@ -633,6 +639,7 @@
         private CustomImageButton btnBeallitasok;
         private System.Windows.Forms.Label lblSegitseg;
         private CustomImageButton btnSegitseg;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
