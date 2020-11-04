@@ -34,16 +34,9 @@
             this.lblBeallitasok = new System.Windows.Forms.Label();
             this.lblMegnyitas = new System.Windows.Forms.Label();
             this.lblMentes = new System.Windows.Forms.Label();
-            this.btnSegitseg = new MathCalc.CustomImageButton();
-            this.btnBeallitasok = new MathCalc.CustomImageButton();
-            this.cstmImgBtnBetoltes = new MathCalc.CustomImageButton();
-            this.BtnMentes = new MathCalc.CustomImageButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.mathCalcButton4 = new MathCalc.MathCalcButton();
-            this.mathCalcButton6 = new MathCalc.MathCalcButton();
-            this.btnClose = new MathCalc.MathCalcButton();
             this.saveFile = new System.Windows.Forms.SaveFileDialog();
             this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -62,7 +55,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnRogzit = new MathCalc.MathCalcButton();
             this.grpBxEgyenletek = new System.Windows.Forms.GroupBox();
             this.listView = new System.Windows.Forms.ListView();
             this.clmnHId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -70,20 +62,28 @@
             this.clmnHAEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmnHBEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmnHCEgyutthato = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.mthClcBtnTorles = new MathCalc.MathCalcButton();
             this.label3 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnRogzit = new MathCalc.MathCalcButton();
+            this.mthClcBtnTorles = new MathCalc.MathCalcButton();
+            this.btnSegitseg = new MathCalc.CustomImageButton();
+            this.btnBeallitasok = new MathCalc.CustomImageButton();
+            this.cstmImgBtnBetoltes = new MathCalc.CustomImageButton();
+            this.BtnMentes = new MathCalc.CustomImageButton();
+            this.mathCalcButton4 = new MathCalc.MathCalcButton();
+            this.mathCalcButton6 = new MathCalc.MathCalcButton();
+            this.btnClose = new MathCalc.MathCalcButton();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSegitseg)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBeallitasok)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cstmImgBtnBetoltes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnMentes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.grpBxUjEgyenlet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.grpBxEgyenletek.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSegitseg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBeallitasok)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cstmImgBtnBetoltes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnMentes)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -154,66 +154,6 @@
             this.lblMentes.TabIndex = 4;
             this.lblMentes.Text = "Mentés";
             // 
-            // btnSegitseg
-            // 
-            this.btnSegitseg.Image = global::MathCalc.Properties.Resources.help_normal;
-            this.btnSegitseg.ImageEnter = global::MathCalc.Properties.Resources.help_hot;
-            this.btnSegitseg.ImageNormal = global::MathCalc.Properties.Resources.help_normal;
-            this.btnSegitseg.Location = new System.Drawing.Point(770, 34);
-            this.btnSegitseg.Name = "btnSegitseg";
-            this.btnSegitseg.Size = new System.Drawing.Size(64, 56);
-            this.btnSegitseg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnSegitseg.TabIndex = 3;
-            this.btnSegitseg.TabStop = false;
-            this.btnSegitseg.Click += new System.EventHandler(this.btnSegitseg_Click);
-            this.btnSegitseg.MouseEnter += new System.EventHandler(this.btnSegitseg_MouseEnter);
-            this.btnSegitseg.MouseLeave += new System.EventHandler(this.btnSegitseg_MouseLeave);
-            // 
-            // btnBeallitasok
-            // 
-            this.btnBeallitasok.Image = global::MathCalc.Properties.Resources.settings_normal;
-            this.btnBeallitasok.ImageEnter = global::MathCalc.Properties.Resources.settings_hot;
-            this.btnBeallitasok.ImageNormal = global::MathCalc.Properties.Resources.settings_normal;
-            this.btnBeallitasok.Location = new System.Drawing.Point(679, 34);
-            this.btnBeallitasok.Name = "btnBeallitasok";
-            this.btnBeallitasok.Size = new System.Drawing.Size(64, 56);
-            this.btnBeallitasok.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnBeallitasok.TabIndex = 3;
-            this.btnBeallitasok.TabStop = false;
-            this.btnBeallitasok.Click += new System.EventHandler(this.btnBeallitasok_Click);
-            this.btnBeallitasok.MouseEnter += new System.EventHandler(this.btnBeallitasok_MouseEnter);
-            this.btnBeallitasok.MouseLeave += new System.EventHandler(this.btnBeallitasok_MouseLeave);
-            // 
-            // cstmImgBtnBetoltes
-            // 
-            this.cstmImgBtnBetoltes.Image = global::MathCalc.Properties.Resources.open_file_normal;
-            this.cstmImgBtnBetoltes.ImageEnter = global::MathCalc.Properties.Resources.open_file_hot;
-            this.cstmImgBtnBetoltes.ImageNormal = global::MathCalc.Properties.Resources.open_file_normal;
-            this.cstmImgBtnBetoltes.Location = new System.Drawing.Point(587, 34);
-            this.cstmImgBtnBetoltes.Name = "cstmImgBtnBetoltes";
-            this.cstmImgBtnBetoltes.Size = new System.Drawing.Size(64, 56);
-            this.cstmImgBtnBetoltes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.cstmImgBtnBetoltes.TabIndex = 3;
-            this.cstmImgBtnBetoltes.TabStop = false;
-            this.cstmImgBtnBetoltes.Click += new System.EventHandler(this.btnMegnyitas_Click);
-            this.cstmImgBtnBetoltes.MouseEnter += new System.EventHandler(this.btnMegnyitas_MouseEnter);
-            this.cstmImgBtnBetoltes.MouseLeave += new System.EventHandler(this.btnMegnyitas_MouseLeave);
-            // 
-            // BtnMentes
-            // 
-            this.BtnMentes.Image = global::MathCalc.Properties.Resources.save_file_normal;
-            this.BtnMentes.ImageEnter = global::MathCalc.Properties.Resources.save_file_hot;
-            this.BtnMentes.ImageNormal = global::MathCalc.Properties.Resources.save_file_normal;
-            this.BtnMentes.Location = new System.Drawing.Point(490, 34);
-            this.BtnMentes.Name = "BtnMentes";
-            this.BtnMentes.Size = new System.Drawing.Size(64, 56);
-            this.BtnMentes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.BtnMentes.TabIndex = 3;
-            this.BtnMentes.TabStop = false;
-            this.BtnMentes.Click += new System.EventHandler(this.btnMentes_Click);
-            this.BtnMentes.MouseEnter += new System.EventHandler(this.BtnMentes_MouseEnter);
-            this.BtnMentes.MouseLeave += new System.EventHandler(this.BtnMentes_MouseLeave);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -245,45 +185,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // mathCalcButton4
-            // 
-            this.mathCalcButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mathCalcButton4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mathCalcButton4.ForeColor = System.Drawing.Color.White;
-            this.mathCalcButton4.Location = new System.Drawing.Point(893, 12);
-            this.mathCalcButton4.Name = "mathCalcButton4";
-            this.mathCalcButton4.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.mathCalcButton4.Size = new System.Drawing.Size(29, 23);
-            this.mathCalcButton4.TabIndex = 0;
-            this.mathCalcButton4.Text = "?";
-            this.mathCalcButton4.Click += new System.EventHandler(this.btnHelp_Click);
-            // 
-            // mathCalcButton6
-            // 
-            this.mathCalcButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.mathCalcButton6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.mathCalcButton6.ForeColor = System.Drawing.Color.White;
-            this.mathCalcButton6.Location = new System.Drawing.Point(924, 12);
-            this.mathCalcButton6.Name = "mathCalcButton6";
-            this.mathCalcButton6.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.mathCalcButton6.Size = new System.Drawing.Size(29, 23);
-            this.mathCalcButton6.TabIndex = 0;
-            this.mathCalcButton6.Text = "_";
-            this.mathCalcButton6.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(958, 12);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.btnClose.Size = new System.Drawing.Size(29, 23);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "X";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // saveFile
             // 
@@ -456,17 +357,6 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "a:";
             // 
-            // btnRogzit
-            // 
-            this.btnRogzit.ForeColor = System.Drawing.Color.White;
-            this.btnRogzit.Location = new System.Drawing.Point(416, 165);
-            this.btnRogzit.Name = "btnRogzit";
-            this.btnRogzit.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.btnRogzit.Size = new System.Drawing.Size(118, 36);
-            this.btnRogzit.TabIndex = 0;
-            this.btnRogzit.Text = "💾 Rögzít";
-            this.btnRogzit.Click += new System.EventHandler(this.btnRogzit_Click);
-            // 
             // grpBxEgyenletek
             // 
             this.grpBxEgyenletek.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -502,6 +392,7 @@
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
             this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // clmnHId
@@ -531,19 +422,6 @@
             this.clmnHCEgyutthato.Text = "\"c\" együttható";
             this.clmnHCEgyutthato.Width = 0;
             // 
-            // mthClcBtnTorles
-            // 
-            this.mthClcBtnTorles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.mthClcBtnTorles.ForeColor = System.Drawing.Color.White;
-            this.mthClcBtnTorles.Location = new System.Drawing.Point(44, 484);
-            this.mthClcBtnTorles.Name = "mthClcBtnTorles";
-            this.mthClcBtnTorles.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
-            this.mthClcBtnTorles.Size = new System.Drawing.Size(179, 36);
-            this.mthClcBtnTorles.TabIndex = 0;
-            this.mthClcBtnTorles.Text = "🗑 Kijelölt(ek) törlése";
-            this.mthClcBtnTorles.Click += new System.EventHandler(this.btnTorles_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -558,6 +436,129 @@
             // 
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // btnRogzit
+            // 
+            this.btnRogzit.ForeColor = System.Drawing.Color.White;
+            this.btnRogzit.Location = new System.Drawing.Point(416, 165);
+            this.btnRogzit.Name = "btnRogzit";
+            this.btnRogzit.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.btnRogzit.Size = new System.Drawing.Size(118, 36);
+            this.btnRogzit.TabIndex = 0;
+            this.btnRogzit.Text = "💾 Rögzít";
+            this.btnRogzit.Click += new System.EventHandler(this.btnRogzit_Click);
+            // 
+            // mthClcBtnTorles
+            // 
+            this.mthClcBtnTorles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.mthClcBtnTorles.ForeColor = System.Drawing.Color.White;
+            this.mthClcBtnTorles.Location = new System.Drawing.Point(44, 484);
+            this.mthClcBtnTorles.Name = "mthClcBtnTorles";
+            this.mthClcBtnTorles.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.mthClcBtnTorles.Size = new System.Drawing.Size(179, 36);
+            this.mthClcBtnTorles.TabIndex = 0;
+            this.mthClcBtnTorles.Text = "🗑 Kijelölt(ek) törlése";
+            this.mthClcBtnTorles.Click += new System.EventHandler(this.btnTorles_Click);
+            // 
+            // btnSegitseg
+            // 
+            this.btnSegitseg.Image = global::MathCalc.Properties.Resources.help_normal;
+            this.btnSegitseg.ImageEnter = global::MathCalc.Properties.Resources.help_hot;
+            this.btnSegitseg.ImageNormal = global::MathCalc.Properties.Resources.help_normal;
+            this.btnSegitseg.Location = new System.Drawing.Point(770, 34);
+            this.btnSegitseg.Name = "btnSegitseg";
+            this.btnSegitseg.Size = new System.Drawing.Size(64, 56);
+            this.btnSegitseg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnSegitseg.TabIndex = 3;
+            this.btnSegitseg.TabStop = false;
+            this.btnSegitseg.Click += new System.EventHandler(this.btnSegitseg_Click);
+            this.btnSegitseg.MouseEnter += new System.EventHandler(this.btnSegitseg_MouseEnter);
+            this.btnSegitseg.MouseLeave += new System.EventHandler(this.btnSegitseg_MouseLeave);
+            // 
+            // btnBeallitasok
+            // 
+            this.btnBeallitasok.Image = global::MathCalc.Properties.Resources.settings_normal;
+            this.btnBeallitasok.ImageEnter = global::MathCalc.Properties.Resources.settings_hot;
+            this.btnBeallitasok.ImageNormal = global::MathCalc.Properties.Resources.settings_normal;
+            this.btnBeallitasok.Location = new System.Drawing.Point(679, 34);
+            this.btnBeallitasok.Name = "btnBeallitasok";
+            this.btnBeallitasok.Size = new System.Drawing.Size(64, 56);
+            this.btnBeallitasok.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnBeallitasok.TabIndex = 3;
+            this.btnBeallitasok.TabStop = false;
+            this.btnBeallitasok.Click += new System.EventHandler(this.btnBeallitasok_Click);
+            this.btnBeallitasok.MouseEnter += new System.EventHandler(this.btnBeallitasok_MouseEnter);
+            this.btnBeallitasok.MouseLeave += new System.EventHandler(this.btnBeallitasok_MouseLeave);
+            // 
+            // cstmImgBtnBetoltes
+            // 
+            this.cstmImgBtnBetoltes.Image = global::MathCalc.Properties.Resources.open_file_normal;
+            this.cstmImgBtnBetoltes.ImageEnter = global::MathCalc.Properties.Resources.open_file_hot;
+            this.cstmImgBtnBetoltes.ImageNormal = global::MathCalc.Properties.Resources.open_file_normal;
+            this.cstmImgBtnBetoltes.Location = new System.Drawing.Point(587, 34);
+            this.cstmImgBtnBetoltes.Name = "cstmImgBtnBetoltes";
+            this.cstmImgBtnBetoltes.Size = new System.Drawing.Size(64, 56);
+            this.cstmImgBtnBetoltes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.cstmImgBtnBetoltes.TabIndex = 3;
+            this.cstmImgBtnBetoltes.TabStop = false;
+            this.cstmImgBtnBetoltes.Click += new System.EventHandler(this.btnMegnyitas_Click);
+            this.cstmImgBtnBetoltes.MouseEnter += new System.EventHandler(this.btnMegnyitas_MouseEnter);
+            this.cstmImgBtnBetoltes.MouseLeave += new System.EventHandler(this.btnMegnyitas_MouseLeave);
+            // 
+            // BtnMentes
+            // 
+            this.BtnMentes.Image = global::MathCalc.Properties.Resources.save_file_normal;
+            this.BtnMentes.ImageEnter = global::MathCalc.Properties.Resources.save_file_hot;
+            this.BtnMentes.ImageNormal = global::MathCalc.Properties.Resources.save_file_normal;
+            this.BtnMentes.Location = new System.Drawing.Point(490, 34);
+            this.BtnMentes.Name = "BtnMentes";
+            this.BtnMentes.Size = new System.Drawing.Size(64, 56);
+            this.BtnMentes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BtnMentes.TabIndex = 3;
+            this.BtnMentes.TabStop = false;
+            this.BtnMentes.Click += new System.EventHandler(this.btnMentes_Click);
+            this.BtnMentes.MouseEnter += new System.EventHandler(this.BtnMentes_MouseEnter);
+            this.BtnMentes.MouseLeave += new System.EventHandler(this.BtnMentes_MouseLeave);
+            // 
+            // mathCalcButton4
+            // 
+            this.mathCalcButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mathCalcButton4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.mathCalcButton4.ForeColor = System.Drawing.Color.White;
+            this.mathCalcButton4.Location = new System.Drawing.Point(893, 12);
+            this.mathCalcButton4.Name = "mathCalcButton4";
+            this.mathCalcButton4.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.mathCalcButton4.Size = new System.Drawing.Size(29, 23);
+            this.mathCalcButton4.TabIndex = 0;
+            this.mathCalcButton4.Text = "?";
+            this.mathCalcButton4.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
+            // mathCalcButton6
+            // 
+            this.mathCalcButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.mathCalcButton6.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.mathCalcButton6.ForeColor = System.Drawing.Color.White;
+            this.mathCalcButton6.Location = new System.Drawing.Point(924, 12);
+            this.mathCalcButton6.Name = "mathCalcButton6";
+            this.mathCalcButton6.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.mathCalcButton6.Size = new System.Drawing.Size(29, 23);
+            this.mathCalcButton6.TabIndex = 0;
+            this.mathCalcButton6.Text = "_";
+            this.mathCalcButton6.Click += new System.EventHandler(this.btnMinimize_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(958, 12);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.OnHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(84)))), ((int)(((byte)(161)))));
+            this.btnClose.Size = new System.Drawing.Size(29, 23);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.Text = "X";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // MathCalcFrm
             // 
@@ -577,10 +578,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MathCalcFrm_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSegitseg)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnBeallitasok)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cstmImgBtnBetoltes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BtnMentes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -590,6 +587,10 @@
             this.grpBxUjEgyenlet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.grpBxEgyenletek.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnSegitseg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBeallitasok)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cstmImgBtnBetoltes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BtnMentes)).EndInit();
             this.ResumeLayout(false);
 
         }

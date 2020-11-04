@@ -11,3 +11,16 @@ D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejleszté
 D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.exe
 D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.pdb
 D:\OneDrive - Dunaújvárosi Egyetem\Study\Fősuli\5. félév\Szoftverfejlesztési technológiák\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.HelpFrm.resources
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\bin\Release\MathCalc.exe.config
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\bin\Release\MathCalc.exe
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\bin\Release\MathCalc.pdb
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.csprojAssemblyReference.cache
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.CustomImageButton.resources
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.HelpFrm.resources
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.MathCalcFrm.resources
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.Properties.Resources.resources
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.SettingsFrm.resources
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.csproj.GenerateResource.cache
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.csproj.CoreCompileInputs.cache
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.exe
+C:\Users\krisz\Desktop\Beadandó\MathCalc\MathCalc\obj\Release\MathCalc.pdb
