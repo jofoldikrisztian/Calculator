@@ -641,6 +641,7 @@
         private System.Windows.Forms.Label lblSegitseg;
         private CustomImageButton btnSegitseg;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+
     }
 }
 
