@@ -13,14 +13,20 @@ namespace MathCalc
 {
     public partial class MathCalcFrm : Form
     {
+
         #region Mezők
-        private const int buttondown = 162;
-        private const int HT_CAPTION = 2;
+
+        private const int buttondown = 0xA1;
+        private const int HT_CAPTION = 0x2;
         private bool askToDelete;
         public static bool askToDeleteHelper;
         public static QuadraticResult quadraticResult;
         public static string tempEquation;
+
+
+
         #endregion
+
         #region Konstruktor
         public MathCalcFrm()
         {
@@ -31,24 +37,31 @@ namespace MathCalc
             backgroundWorker1.WorkerSupportsCancellation = true;
         }
         #endregion
+
         #region Események
+
         #region Ablakvezérlők
         private void btnClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         private void btnHelp_Click(object sender, EventArgs e)
         {
             btnSegitseg_Click(sender, e);
         }
+
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
+
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
+
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -57,10 +70,14 @@ namespace MathCalc
                 SendMessage(Handle, buttondown, HT_CAPTION, 0);
             }
         }
+
         #endregion
+
         #region Menüsáv
+
         private void btnMentes_Click(object sender, EventArgs e)
         {
+
             if (listView.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Egy elem sincs kijelölve!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -112,14 +129,19 @@ namespace MathCalc
             {
                 using (SettingsFrm settingsFrm = new SettingsFrm())
                 {
-                    double defaultOpacity = Opacity;
+                    var defaultOpacity = Opacity;
                     Opacity = .50d;
 
-                    var dialogResult = settingsFrm.ShowDialog();
-                    Opacity = defaultOpacity;
-
+                    DialogResult dialogResult = settingsFrm.ShowDialog();
                     if (dialogResult == DialogResult.OK)
+                    {
                         askToDelete = askToDeleteHelper;
+                        Opacity = defaultOpacity;
+                    }
+                    else
+                    {
+                        Opacity = defaultOpacity;
+                    }
                 }
             }
             catch (Exception ex)
@@ -127,6 +149,7 @@ namespace MathCalc
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void btnBeallitasok_MouseEnter(object sender, EventArgs e)
         {
             lblBeallitasok.Font = new Font(lblBeallitasok.Font, FontStyle.Bold);
@@ -137,6 +160,7 @@ namespace MathCalc
             lblBeallitasok.Font = new Font(lblBeallitasok.Font, FontStyle.Regular);
             Cursor = Cursors.Default;
         }
+
         private void btnSegitseg_Click(object sender, EventArgs e)
         {
             try
@@ -147,7 +171,14 @@ namespace MathCalc
                     Opacity = .50d;
 
                     DialogResult dialogResult = helpFrm.ShowDialog();
-                    Opacity = defaultOpacity;   
+                    if (dialogResult == DialogResult.OK)
+                    {
+                        Opacity = defaultOpacity;
+                    }
+                    else
+                    {
+                        Opacity = defaultOpacity;
+                    }
                 }
             }
             catch (Exception ex)
@@ -173,7 +204,7 @@ namespace MathCalc
         {
             if (string.IsNullOrEmpty(txtBxA.Text) || string.IsNullOrEmpty(txtBxB.Text) || string.IsNullOrEmpty(txtBxC.Text))
             {
-                MessageBox.Show("Hiányzó adat!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Hiányzó adat!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (float.TryParse(txtBxA.Text, out float a) && float.TryParse(txtBxB.Text, out float b) && float.TryParse(txtBxC.Text, out float c))
             {
@@ -184,18 +215,18 @@ namespace MathCalc
                 if (!listView.Items.ContainsKey(newItem.Name))
                 {
                     listView.Items.Add(newItem);
-                    clearTextBoxes(txtBxA, txtBxB, txtBxC);
+                    clearTextBoxes();
                 }
                 else
                 {
-                    MessageBox.Show("A táblázat már tartalmazza ezt az egyenletet!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    clearTextBoxes(txtBxA, txtBxB, txtBxC);
+                    MessageBox.Show("A táblázat már tartalmazza ezt az egyenletet!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearTextBoxes();
                 }
             }
             else
             {
                 MessageBox.Show("Hibás paraméter!", "Hiba!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                clearTextBoxes(txtBxA, txtBxB, txtBxC);
+                clearTextBoxes();
             }
         }
         private void btnTorles_Click(object sender, EventArgs e)
@@ -211,7 +242,6 @@ namespace MathCalc
                     lblBxX1.Text = "";
                     lblBxX2.Text = "";
                     lblBxEgyenlet.Text = "";
-
                 }
             }
             else
@@ -222,19 +252,20 @@ namespace MathCalc
 
         private void listView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (listView.SelectedItems.Count == 1)
-            //{
-            //    if (backgroundWorker1.IsBusy != true)
-            //    {
-            //        backgroundWorker1.RunWorkerAsync(sender);
-            //    }
-            //}
-            //else
-            //{
-            //    lblBxX1.Text = "";
-            //    lblBxX2.Text = "";
-            //    lblBxEgyenlet.Text = "";
-            //}
+            if (listView.SelectedItems.Count == 1)
+            {
+                if (backgroundWorker1.IsBusy != true)
+                {
+                   
+                    backgroundWorker1.RunWorkerAsync(sender);
+                }
+            }
+            else
+            {
+                lblBxX1.Text = "";
+                lblBxX2.Text = "";
+                lblBxEgyenlet.Text = "";
+            }
         }
 
         #endregion
@@ -355,7 +386,7 @@ namespace MathCalc
         {
             if (e.Error != null)
             {
-                lblBxEgyenlet.Text = "Hibaaaa: " + e.Error.Message;
+                lblBxEgyenlet.Text = "Error: " + e.Error.Message;
             }
             else
             {
@@ -412,26 +443,21 @@ namespace MathCalc
 
             foreach (Data item in datas)
             {
-                string equation = EquationGenerator(float.Parse(item.A), float.Parse(item.B), float.Parse(item.C));
-                ListViewItem newItem = new ListViewItem(new string[] { item.Id.ToString(), equation, item.A, item.B, item.C });
-                newItem.Name = equation;
+               string equation = EquationGenerator(float.Parse(item.A), float.Parse(item.B), float.Parse(item.C));
+               ListViewItem newItem = new ListViewItem(new string[] { item.Id.ToString(), equation, item.A, item.B, item.C });
+               newItem.Name = equation;
 
-                if (!listView.Items.ContainsKey(newItem.Name))
-                {
-                    listView.Items.Add(newItem);
-                }
+               if (!listView.Items.ContainsKey(newItem.Name))
+               {
+                   listView.Items.Add(newItem);
+               }
             }
         }
-        private void clearTextBoxes(params TextBox[] textboxes)
+        private void clearTextBoxes()
         {
-            foreach (var textbox in textboxes)
-                textbox.Clear();
-        }
-
-        private void clearLabels(params Label[] labels)
-        {
-            foreach (var label in labels)
-                label.Text = "";
+            txtBxA.Clear();
+            txtBxB.Clear();
+            txtBxC.Clear();
         }
 
         private string EquationGenerator(double a, double b, double c)
@@ -479,21 +505,6 @@ namespace MathCalc
             }
         }
 
-        #endregion
-
-        private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            if (listView.SelectedItems.Count == 1)
-            {
-                if (backgroundWorker1.IsBusy != true)
-                {
-                    backgroundWorker1.RunWorkerAsync(sender);
-                }
-            }
-            else
-            {
-                clearLabels(lblBxX1, lblBxX2, lblBxEgyenlet);
-            }
-        }
+        #endregion    
     }
 }
