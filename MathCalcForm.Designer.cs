@@ -41,6 +41,7 @@
             this.openFile = new System.Windows.Forms.OpenFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblBxX2 = new System.Windows.Forms.Label();
             this.lblBxX1 = new System.Windows.Forms.Label();
             this.lblBxEgyenlet = new System.Windows.Forms.Label();
@@ -214,6 +215,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.progressBar1);
             this.groupBox2.Controls.Add(this.lblBxX2);
             this.groupBox2.Controls.Add(this.lblBxX1);
             this.groupBox2.Controls.Add(this.lblBxEgyenlet);
@@ -226,6 +228,13 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Egyenlet megoldása";
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(111, 199);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(446, 23);
+            this.progressBar1.TabIndex = 4;
             // 
             // lblBxX2
             // 
@@ -392,7 +401,6 @@
             this.listView.TabIndex = 1;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
             this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             // 
             // clmnHId
@@ -641,7 +649,7 @@
         private System.Windows.Forms.Label lblSegitseg;
         private CustomImageButton btnSegitseg;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 

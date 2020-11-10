@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Xml.Serialization;
 
 namespace MathCalc
@@ -29,6 +30,7 @@ namespace MathCalc
             askToDelete = true;
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.WorkerSupportsCancellation = true;
+            progressBar1.Hide();
         }
         #endregion
         #region Események
@@ -211,64 +213,35 @@ namespace MathCalc
             if (listView.SelectedItems.Count == 1)
             {
                 if (backgroundWorker1.IsBusy != true)
-                {
-
                     backgroundWorker1.RunWorkerAsync(sender);
-                }
             }
             else
-            {
-                clearLabels(lblBxX1, lblBxX2, lblBxEgyenlet);
-            }
+              clearLabels(lblBxX1, lblBxX2, lblBxEgyenlet);
         }
         private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
-            if (lblBxEgyenlet.InvokeRequired)
-            {
-                lblBxEgyenlet.Invoke(new Action(() => lblBxEgyenlet.Text = "Türelem.... Éppen számolunk..."));
-            }
-            else
-            {
-                lblBxEgyenlet.Text = "Türelem... Éppen számolunk...";
-            }
-            if (lblBxX1.InvokeRequired)
-            {
-                lblBxX1.Invoke(new Action(() => clearLabels(lblBxX1)));
-            }
-            else
-            {
-                clearLabels(lblBxX1);
-            }
-            if (lblBxX2.InvokeRequired)
-            {
-                lblBxX2.Invoke(new Action(() => clearLabels(lblBxX2)));
-            }
-            else
-            {
-                clearLabels(lblBxX2);
-            }
-            var item = new ListViewItem();
-            if (listView.InvokeRequired)
-            {
+            lblBxEgyenlet.Invoke(new Action(() => lblBxEgyenlet.Text = "Türelem.... Éppen számolunk..."));
+            lblBxX1.Invoke(new Action(() => clearLabels(lblBxX1)));
+            lblBxX2.Invoke(new Action(() => clearLabels(lblBxX2)));
 
-                listView.Invoke(new Action(() => item = listView.SelectedItems[0]));
-            }
-            else
-            {
-                item = listView.SelectedItems[0];
-            }
+            var item = new ListViewItem();
+
+            listView.Invoke(new Action(() => item = listView.SelectedItems[0]));
+      
             var aegyutthato = double.Parse(item.SubItems[clmnHAEgyutthato.Index].Text);
             var begyutthato = double.Parse(item.SubItems[clmnHBEgyutthato.Index].Text);
             var cegyutthato = double.Parse(item.SubItems[clmnHCEgyutthato.Index].Text);
+
             QuadraticEquation quadraticEquation = new QuadraticEquation(aegyutthato, begyutthato, cegyutthato);
-            GetResult(quadraticEquation);
             tempEquation = item.SubItems[clmnHEgyenlet.Index].Text;
+            GetResult(quadraticEquation);   
         }
         private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
             {
-                lblBxEgyenlet.Text = "Hiba: " + e.Error.Message;
+                //lblBxEgyenlet.Text = "Hiba: " + e.Error.Message;
+                lblBxEgyenlet.Text = lblBxX1.Text = lblBxX2.Text = "";
             }
             else
             {
@@ -282,71 +255,56 @@ namespace MathCalc
         private void MathCalcFrm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.X)
-            {
                 Application.Exit();
-            }
             else if (e.Control && e.KeyCode == Keys.O)
-            {
                 btnMegnyitas_Click(sender, e);
-            }
             else if (e.Control && e.KeyCode == Keys.S)
-            {
                 btnMentes_Click(sender, e);
-            }
             else if (e.Control && e.KeyCode == Keys.R)
-            {
                 btnRogzit_Click(sender, e);
-            }
             else if (e.Control && e.KeyCode == Keys.D)
-            {
                 btnTorles_Click(sender, e);
-            }
             else if (e.Control && e.KeyCode == Keys.I)
-            {
                 foreach (ListViewItem item in listView.Items)
-                {
                     item.Selected = !(item.Selected);
-                }
-            }
             else if (e.Control && e.KeyCode == Keys.A)
-            {
                 foreach (ListViewItem item in listView.Items)
-                {
                     item.Selected = true;
-                }
-            }
             else if (e.Control && e.KeyCode == Keys.N)
-            {
                 foreach (ListViewItem item in listView.SelectedItems)
-                {
                     item.Selected = false;
-                }
-            }
             else if (e.KeyCode == Keys.F1)
-            {
                 btnHelp_Click(sender, e);
-            }
         }
         #endregion
         #endregion
         #region Metódusok
         private void SaveToXml(string XmlFilePath)
         {
-            List<Data> datas = new List<Data>();
-            Data data;
-            Parallel.ForEach(listView.SelectedItems.Cast<ListViewItem>(), item =>
+            try
             {
-                data = new Data();
-                data.Id = int.Parse(item.SubItems[clmnHId.Index].Text);
-                data.A = item.SubItems[clmnHAEgyutthato.Index].Text;
-                data.B = item.SubItems[clmnHBEgyutthato.Index].Text;
-                data.C = item.SubItems[clmnHCEgyutthato.Index].Text;
-                datas.Add(data);
-            });
-            List<Data> sortedData = datas.OrderBy(o => o.Id).ToList();
-            XmlSerializer serializer = new XmlSerializer(typeof(List<Data>));
-            using (FileStream stream = File.OpenWrite(XmlFilePath))
-                serializer.Serialize(stream, sortedData);
+                List<Data> datas = new List<Data>();
+                Data data;
+                foreach (ListViewItem item in listView.SelectedItems)
+                {
+                    data = new Data();
+                    data.Id = int.Parse(item.SubItems[clmnHId.Index].Text);
+                    data.A = item.SubItems[clmnHAEgyutthato.Index].Text;
+                    data.B = item.SubItems[clmnHBEgyutthato.Index].Text;
+                    data.C = item.SubItems[clmnHCEgyutthato.Index].Text;
+                    datas.Add(data);
+                }
+                List<Data> sortedData = datas.OrderBy(o => o.Id).ToList();
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Data>));
+                using (FileStream stream = File.OpenWrite(XmlFilePath))
+                    serializer.Serialize(stream, sortedData);
+
+                MessageBox.Show("Sikeres mentés!", "Információ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hiba történt a mentés során!", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void LoadFromXml(string xmlFilePath)
         {
@@ -392,24 +350,50 @@ namespace MathCalc
         {
             if (Data is QuadraticEquation qe)
             {
+                int m;
                 double discriminant = Math.Pow(qe.B, 2) - 4 * qe.A * qe.C;
-                bool isComplex = discriminant < 0;
-                double discriminantSqrt = Math.Sqrt(Math.Abs(discriminant));
-                double firstPart = (-qe.B) / (2 * qe.A);
-                double secondPart = discriminantSqrt / (2 * qe.A);
-                Thread.Sleep(1000);
-                if (isComplex)
-                {
-                    quadraticResult.FirstValue = $"{Math.Round(firstPart, 2)} + {Math.Round(secondPart, 2)}i";
-                    quadraticResult.SecondValue = $"{Math.Round(firstPart, 2)} - {Math.Round(secondPart, 2)}i";
-                }
+
+                if (qe.A == 0)
+                    m = 1;
+                else if (discriminant > 0)
+                    m = 2;
+                else if (discriminant == 0)
+                    m = 3;
                 else
+                    m = 4;
+
+                progressBar1.Invoke(new Action(() => progressBar1.Value = 0));
+                progressBar1.Invoke(new Action(() => progressBar1.Show()));
+
+                for (int i = 1; i <= 100; ++i)
+                    progressBar1.Invoke(new Action(() => progressBar1.Value = i));
+
+                Thread.Sleep(1000);
+                progressBar1.Invoke(new Action(() => progressBar1.Hide()));
+
+                switch (m)
                 {
-                    quadraticResult.FirstValue = (Math.Round(firstPart, 2) + Math.Round(secondPart, 2)).ToString();
-                    quadraticResult.SecondValue = (Math.Round(firstPart, 2) - Math.Round(secondPart, 2)).ToString();
-                }
+                    case 1:
+                        tempEquation = "Hiba! A kiválaszott egyenlet nem másodfokú!";
+                        quadraticResult.FirstValue = "";
+                        quadraticResult.SecondValue = "";
+                        break;
+                    case 2:
+                        quadraticResult.FirstValue = Math.Round(((-qe.B + Math.Sqrt(discriminant)) / (2 * qe.A)),2).ToString();
+                        quadraticResult.SecondValue = Math.Round(((-qe.B - Math.Sqrt(discriminant)) / (2 * qe.A)),2).ToString();
+                        break;
+                    case 3:
+                        quadraticResult.FirstValue = quadraticResult.SecondValue = (Math.Round((-qe.B)/(2*qe.A)), 2).ToString();
+                        break;
+                    case 4:
+                        double r1 = Math.Round((-qe.B) / (2 * qe.A), 2);
+                        double r2 = Math.Round(Math.Sqrt(-discriminant) / (2 * qe.A), 2);
+                        quadraticResult.FirstValue = $"{r1} + i{r2}";
+                        quadraticResult.SecondValue = $"{r1} - i{r2}";
+                        break;
+                }       
             }
         }
-        #endregion    
+        #endregion
     }
 }
